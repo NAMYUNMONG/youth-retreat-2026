@@ -241,7 +241,7 @@ a {
   text-shadow:
     0 3px 0 #04304d,
     0 10px 20px rgba(4, 48, 77, 0.18);
-  transform: scaleX(0.78) scaleY(1.34);
+  transform: translateY(-0.08em) scaleX(0.78) scaleY(1.34);
   transform-origin: center;
 }
 
