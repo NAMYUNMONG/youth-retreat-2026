@@ -74,4 +74,6 @@ export const retreatConfig = {
 
 이 프로젝트는 로그인, 서버, DB가 없는 정적 웹페이지입니다. `npm run build` 후 생성되는 `dist/` 폴더를 GitHub Pages, Netlify, Vercel, Cloudflare Pages 같은 정적 호스팅에 배포하는 방식을 권장합니다.
 
-하위 경로에 배포하는 경우 Vite의 `base` 설정이 필요할 수 있습니다. 예를 들어 GitHub Pages에서 저장소명 하위 경로로 배포한다면 `vite.config.ts`에 `base: "/저장소명/"`을 추가합니다.
+이 저장소는 GitHub Pages 배포를 위해 `vite.config.ts`에 `base: "/youth-retreat-2026/"`가 설정되어 있고, `.github/workflows/deploy.yml` 워크플로가 `main` 브랜치 푸시마다 `dist/`를 배포합니다.
+
+저장소 이름을 바꾸면 `vite.config.ts`의 `base` 값도 새 저장소명에 맞게 수정해야 합니다.
