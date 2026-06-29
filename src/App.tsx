@@ -1,0 +1,124 @@
+import { useCallback, useState } from "react";
+import { BottomNavigation } from "./components/BottomNavigation";
+import { DaySection } from "./components/DaySection";
+import { Hero } from "./components/Hero";
+import { NotePad } from "./components/NotePad";
+import { PhotoShareCard } from "./components/PhotoShareCard";
+import { ProgramCard } from "./components/ProgramCard";
+import { RetreatInfo } from "./components/RetreatInfo";
+import { Toast } from "./components/Toast";
+import { WorshipCard } from "./components/WorshipCard";
+import { retreatConfig } from "./config/retreat";
+
+function App() {
+  const [toast, setToast] = useState("");
+
+  const showToast = useCallback((message: string) => {
+    setToast("");
+    window.setTimeout(() => setToast(message), 10);
+  }, []);
+
+  return (
+    <>
+      <main className="app-shell">
+        <Hero />
+        <RetreatInfo />
+
+        <DaySection id="day1" day="DAY 1" date="7월 16일 목요일" summary="아이스브레이킹과 저녁 예배로 시작하는 첫날">
+          <ProgramCard
+            eyebrow="ICE BREAKING"
+            title="아이스브레이킹 프로그램"
+            description="프로그램 안내와 진행 순서는 확정 후 업데이트됩니다."
+          />
+          <WorshipCard
+            dayLabel="DAY 1"
+            playlistUrl={retreatConfig.day1.playlistUrl}
+            sheetUrl={retreatConfig.day1.sheetUrl}
+            sermonPassage={retreatConfig.day1.sermonPassage}
+            sermonTopic={retreatConfig.day1.sermonTopic}
+            noteKey="day1-sermon-note"
+            onEmptyLink={showToast}
+          />
+        </DaySection>
+
+        <DaySection id="day2" day="DAY 2" date="7월 17일 금요일" summary="말씀, 강의, 팀 활동, 예배로 이어지는 중심 일정">
+          <ProgramCard
+            eyebrow="MORNING"
+            title="아침묵상"
+            description="아침묵상 본문과 나눔 가이드는 추후 업데이트됩니다."
+          />
+          <ProgramCard
+            eyebrow="SESSION"
+            title="고광현 장로님 강의 세션"
+            description="강의 주제와 자료는 확정 후 확인할 수 있습니다."
+          >
+            <NotePad
+              storageKey="day2-lecture-note"
+              label="DAY 2 강의 정리 노트"
+              placeholder="강의에서 기억하고 싶은 내용, 질문, 적용점을 자유롭게 적어보세요."
+            />
+          </ProgramCard>
+          <ProgramCard
+            eyebrow="TEAM"
+            title="체육대회 및 팀별 모임"
+            description="체육대회 종목과 팀별 모임 안내는 조편성과 함께 공지됩니다."
+          />
+          <WorshipCard
+            dayLabel="DAY 2"
+            playlistUrl={retreatConfig.day2.playlistUrl}
+            sheetUrl={retreatConfig.day2.sheetUrl}
+            sermonPassage={retreatConfig.day2.sermonPassage}
+            sermonTopic={retreatConfig.day2.sermonTopic}
+            noteKey="day2-sermon-note"
+            onEmptyLink={showToast}
+          />
+        </DaySection>
+
+        <DaySection id="day3" day="DAY 3" date="7월 18일 토요일" summary="수련회를 마무리하며 받은 마음을 정리하는 아침">
+          <ProgramCard
+            eyebrow="CLOSING MORNING"
+            title="아침묵상"
+            description="마지막 아침, 하나님께서 주신 마음을 조용히 되새깁니다."
+          >
+            <NotePad
+              storageKey="day3-meditation-note"
+              label="DAY 3 아침묵상 정리 노트"
+              placeholder="수련회를 마치며 붙들고 싶은 말씀과 삶의 적용을 적어보세요."
+            />
+          </ProgramCard>
+        </DaySection>
+
+        <section id="photos" className="page-section photos-section">
+          <div className="section-heading">
+            <span>PHOTO SHARE</span>
+            <h2>사진공유방</h2>
+          </div>
+          <div className="photo-grid">
+            <PhotoShareCard
+              title="수련회 사진공유방"
+              description="예배, 조별 활동, 공동체의 순간을 함께 모아봅니다."
+              url={retreatConfig.photos.retreatUrl}
+              onEmptyLink={() => showToast("사진 링크 준비 중입니다.")}
+            />
+            <PhotoShareCard
+              title="봉사활동 사진공유방"
+              description="섬김과 봉사의 현장을 기록하는 공간입니다."
+              url={retreatConfig.photos.volunteerUrl}
+              onEmptyLink={() => showToast("사진 링크 준비 중입니다.")}
+            />
+            <PhotoShareCard
+              title="기타 프로그램 사진공유방"
+              description="레크리에이션과 특별 프로그램 사진을 확인합니다."
+              url={retreatConfig.photos.programUrl}
+              onEmptyLink={() => showToast("사진 링크 준비 중입니다.")}
+            />
+          </div>
+        </section>
+      </main>
+      <BottomNavigation />
+      <Toast message={toast} onClose={() => setToast("")} />
+    </>
+  );
+}
+
+export default App;
