@@ -38,11 +38,6 @@ export function RetreatInfo() {
       </div>
 
       <div className="info-card">
-        <div className="info-card__main">
-          <p>수련회 주제</p>
-          <h3>염려 Off, 기도 On</h3>
-          <p>고민, 걱정, 두려움이 있을 때 기도의 자리로 나아가라!</p>
-        </div>
         <div className="info-grid">
           <div>
             <span aria-hidden="true">○</span>
