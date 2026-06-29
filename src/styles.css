@@ -585,7 +585,7 @@ a {
 .day-header {
   position: relative;
   overflow: hidden;
-  margin-bottom: 14px;
+  margin: 18px 0 14px;
   border-radius: 26px;
   padding: 20px;
   background:
@@ -608,10 +608,12 @@ a {
 }
 
 .day-header p {
-  max-width: 280px;
+  max-width: 100%;
   margin: 8px 0 0;
+  font-size: clamp(0.74rem, 3.2vw, 0.92rem);
   line-height: 1.5;
   word-break: keep-all;
+  white-space: nowrap;
 }
 
 .day-header::after {
