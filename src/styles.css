@@ -433,24 +433,10 @@ a {
 
 .info-grid div {
   display: grid;
-  grid-template-columns: 34px 1fr;
-  column-gap: 10px;
-  align-items: center;
+  gap: 4px;
   border-radius: 16px;
   padding: 12px;
   background: rgba(221, 255, 247, 0.86);
-}
-
-.info-grid span {
-  grid-row: span 2;
-  display: grid;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  border-radius: 50%;
-  background: #0b7f89;
-  color: #ffffff;
-  font-weight: 900;
 }
 
 .info-grid p,

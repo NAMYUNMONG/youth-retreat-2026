@@ -40,17 +40,14 @@ export function RetreatInfo() {
       <div className="info-card">
         <div className="info-grid">
           <div>
-            <span aria-hidden="true">○</span>
             <p>목표</p>
             <strong>고민, 걱정, 두려움이 있을 때 기도의 자리로 나아가라!</strong>
           </div>
           <div>
-            <span aria-hidden="true">◷</span>
             <p>일시</p>
             <strong>2026년 7월 16–18일 (목–토)</strong>
           </div>
           <div>
-            <span aria-hidden="true">⌖</span>
             <p>장소</p>
             <strong>
               <a href="https://naver.me/xdjoQdGo" target="_blank" rel="noreferrer">
