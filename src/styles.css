@@ -582,62 +582,6 @@ a {
   accent-color: #088c96;
 }
 
-.day-link-panel {
-  display: grid;
-  gap: 10px;
-  margin-top: 14px;
-  border-radius: 18px;
-  padding: 13px;
-  background:
-    radial-gradient(circle at 92% 12%, rgba(255, 230, 107, 0.58) 0 1.2rem, transparent 1.3rem),
-    linear-gradient(135deg, #063a57, #078b93);
-}
-
-.day-link-panel p {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 0.86rem;
-  font-weight: 800;
-}
-
-.day-link-panel__buttons {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-}
-
-.day-link-panel__buttons a {
-  display: grid;
-  min-width: 0;
-  min-height: 64px;
-  align-content: center;
-  justify-items: center;
-  gap: 3px;
-  border: 1px solid rgba(255, 255, 255, 0.42);
-  border-radius: 16px;
-  padding: 9px 6px;
-  background: rgba(255, 255, 255, 0.18);
-  color: #ffffff;
-  text-align: center;
-  box-shadow: 0 10px 20px rgba(2, 38, 58, 0.16);
-}
-
-.day-link-panel__buttons a:active {
-  transform: translateY(1px) scale(0.98);
-}
-
-.day-link-panel__buttons strong {
-  font-size: 0.92rem;
-  line-height: 1.1;
-}
-
-.day-link-panel__buttons span {
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 0.74rem;
-  font-weight: 800;
-  line-height: 1.1;
-}
-
 .day-header {
   position: relative;
   overflow: hidden;
@@ -920,7 +864,7 @@ a {
   bottom: 12px;
   display: grid;
   width: min(calc(100% - 24px), 406px);
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 4px;
   transform: translateX(50%);
   border: 1px solid rgba(255, 255, 255, 0.72);
