@@ -19,7 +19,7 @@ export function TimeTable({ items }: TimeTableProps) {
   }
 
   return (
-    <Accordion title="오늘의 일정" icon="◷" defaultOpen>
+    <Accordion title="오늘의 일정" icon="◷">
       <ol className="time-table__list" aria-label="상세 일정">
         {items.map((item) => (
           <li key={`${item.time}-${item.title}`}>
