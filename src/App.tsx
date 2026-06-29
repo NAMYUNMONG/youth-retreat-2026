@@ -55,7 +55,6 @@ function PageTop({
 function Day1Page({ showToast }: { showToast: (message: string) => void }) {
   return (
     <>
-      <PageTop label="RETREAT DAY" title="7월 16일" />
       <DaySection id="day1" day="DAY 1" date="7월 16일 목요일" summary="아이스브레이킹과 저녁 예배로 시작하는 첫날">
         <ProgramCard
           eyebrow="ICE BREAKING"
@@ -81,7 +80,6 @@ function Day1Page({ showToast }: { showToast: (message: string) => void }) {
 function Day2Page({ showToast }: { showToast: (message: string) => void }) {
   return (
     <>
-      <PageTop label="RETREAT DAY" title="7월 17일" />
       <DaySection id="day2" day="DAY 2" date="7월 17일 금요일" summary="말씀, 강의, 팀 활동, 예배로 이어지는 중심 일정">
         <ProgramCard
           eyebrow="MORNING"
@@ -144,7 +142,6 @@ function SheetPage({
 function Day3Page() {
   return (
     <>
-      <PageTop label="RETREAT DAY" title="7월 18일" />
       <DaySection id="day3" day="DAY 3" date="7월 18일 토요일" summary="수련회를 마무리하며 받은 마음을 정리하는 아침">
         <ProgramCard
           eyebrow="CLOSING MORNING"
