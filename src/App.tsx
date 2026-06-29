@@ -6,25 +6,45 @@ import { NotePad } from "./components/NotePad";
 import { PhotoShareCard } from "./components/PhotoShareCard";
 import { ProgramCard } from "./components/ProgramCard";
 import { RetreatInfo } from "./components/RetreatInfo";
+import { SheetItem, SheetViewer } from "./components/SheetViewer";
 import { Toast } from "./components/Toast";
 import { WorshipCard } from "./components/WorshipCard";
 import { retreatConfig } from "./config/retreat";
 
-type Route = "home" | "about" | "day1" | "day2" | "day3" | "photos";
+type Route = "home" | "about" | "day1" | "day2" | "day3" | "day1Sheets" | "day2Sheets" | "photos";
 
-const routes: Route[] = ["home", "about", "day1", "day2", "day3", "photos"];
+const routeMap: Record<string, Route> = {
+  home: "home",
+  about: "about",
+  day1: "day1",
+  day2: "day2",
+  day3: "day3",
+  "day1/sheets": "day1Sheets",
+  "day2/sheets": "day2Sheets",
+  photos: "photos",
+};
 
 const getRoute = (): Route => {
   if (typeof window === "undefined") return "home";
   const route = window.location.hash.replace(/^#\/?/, "") || "home";
-  return routes.includes(route as Route) ? (route as Route) : "home";
+  return routeMap[route] ?? "home";
 };
 
-function PageTop({ label, title }: { label: string; title: string }) {
+function PageTop({
+  label,
+  title,
+  backHref = "#/",
+  backLabel = "홈으로",
+}: {
+  label: string;
+  title: string;
+  backHref?: string;
+  backLabel?: string;
+}) {
   return (
     <header className="subpage-top">
-      <a href="#/" aria-label="홈 페이지로 이동">
-        홈으로
+      <a href={backHref} aria-label={`${backLabel} 이동`}>
+        {backLabel}
       </a>
       <span>{label}</span>
       <h1>{title}</h1>
@@ -49,6 +69,7 @@ function Day1Page({ showToast }: { showToast: (message: string) => void }) {
           sermonPassage={retreatConfig.day1.sermonPassage}
           sermonTopic={retreatConfig.day1.sermonTopic}
           sheets={retreatConfig.day1.sheets}
+          sheetPageHref="#/day1/sheets"
           noteKey="day1-sermon-note"
           onEmptyLink={showToast}
         />
@@ -90,10 +111,32 @@ function Day2Page({ showToast }: { showToast: (message: string) => void }) {
           sermonPassage={retreatConfig.day2.sermonPassage}
           sermonTopic={retreatConfig.day2.sermonTopic}
           sheets={retreatConfig.day2.sheets}
+          sheetPageHref="#/day2/sheets"
           noteKey="day2-sermon-note"
           onEmptyLink={showToast}
         />
       </DaySection>
+    </>
+  );
+}
+
+function SheetPage({
+  dayLabel,
+  title,
+  backHref,
+  sheets,
+}: {
+  dayLabel: string;
+  title: string;
+  backHref: string;
+  sheets: SheetItem[];
+}) {
+  return (
+    <>
+      <PageTop label="WORSHIP SHEETS" title={title} backHref={backHref} backLabel={`${dayLabel}으로`} />
+      <section className="page-section">
+        <SheetViewer dayLabel={dayLabel} sheets={sheets} />
+      </section>
     </>
   );
 }
@@ -181,6 +224,12 @@ function App() {
     if (route === "day1") return <Day1Page showToast={showToast} />;
     if (route === "day2") return <Day2Page showToast={showToast} />;
     if (route === "day3") return <Day3Page />;
+    if (route === "day1Sheets") {
+      return <SheetPage dayLabel="DAY 1" title="DAY 1 악보" backHref="#/day1" sheets={retreatConfig.day1.sheets} />;
+    }
+    if (route === "day2Sheets") {
+      return <SheetPage dayLabel="DAY 2" title="DAY 2 악보" backHref="#/day2" sheets={retreatConfig.day2.sheets} />;
+    }
     if (route === "photos") return <PhotosPage showToast={showToast} />;
 
     return (
@@ -194,7 +243,7 @@ function App() {
   return (
     <>
       <main className="app-shell">{renderPage()}</main>
-      <BottomNavigation currentRoute={route} />
+      <BottomNavigation currentRoute={route === "day1Sheets" ? "day1" : route === "day2Sheets" ? "day2" : route} />
       <Toast message={toast} onClose={() => setToast("")} />
     </>
   );

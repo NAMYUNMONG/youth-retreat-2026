@@ -1,6 +1,6 @@
 import { NotePad } from "./NotePad";
 import { ProgramCard } from "./ProgramCard";
-import { SheetItem, SheetViewer } from "./SheetViewer";
+import { SheetItem } from "./SheetViewer";
 
 type WorshipCardProps = {
   dayLabel: string;
@@ -9,6 +9,7 @@ type WorshipCardProps = {
   sermonPassage: string;
   sermonTopic: string;
   sheets?: SheetItem[];
+  sheetPageHref?: string;
   noteKey: string;
   onEmptyLink: (message: string) => void;
 };
@@ -22,6 +23,7 @@ export function WorshipCard({
   sermonPassage,
   sermonTopic,
   sheets = [],
+  sheetPageHref,
   noteKey,
   onEmptyLink,
 }: WorshipCardProps) {
@@ -31,6 +33,15 @@ export function WorshipCard({
       return;
     }
     window.open(url, "_blank", "noopener,noreferrer");
+  };
+
+  const openSheets = () => {
+    if (sheets.length > 0 && sheetPageHref) {
+      window.location.hash = sheetPageHref.replace(/^#/, "");
+      return;
+    }
+
+    openLink(sheetUrl);
   };
 
   return (
@@ -47,13 +58,12 @@ export function WorshipCard({
         <button
           type="button"
           className="button button--secondary"
-          onClick={() => openLink(sheetUrl)}
+          onClick={openSheets}
           aria-label={`${dayLabel} 악보 열기`}
         >
           악보 열기
         </button>
       </div>
-      <SheetViewer dayLabel={dayLabel} sheets={sheets} />
       <dl className="sermon-meta">
         <div>
           <dt>설교 말씀 본문</dt>
