@@ -260,7 +260,7 @@ a {
 .hero__verse {
   display: flex;
   width: 100%;
-  justify-content: center;
+  justify-content: flex-start;
   margin: 0 0 10px;
   border-radius: 14px;
   padding: 10px 12px;
@@ -305,9 +305,13 @@ a {
   display: grid;
   width: calc(100% - 22px);
   margin-inline: auto;
-  grid-template-columns: 31px minmax(0, 1fr);
+  grid-template-columns: 35px minmax(0, 1fr);
   column-gap: 0;
   align-items: start;
+}
+
+.hero__scripture-line strong {
+  padding-left: 4px;
 }
 
 .sun {
