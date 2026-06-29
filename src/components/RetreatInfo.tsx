@@ -52,7 +52,11 @@ export function RetreatInfo() {
           <div>
             <span aria-hidden="true">⌖</span>
             <p>장소</p>
-            <strong>인천 무의감리교회</strong>
+            <strong>
+              <a href="https://naver.me/xdjoQdGo" target="_blank" rel="noreferrer">
+                인천 무의교회
+              </a>
+            </strong>
           </div>
         </div>
       </div>
