@@ -1,8 +1,7 @@
 const items = [
   { href: "#/", route: "home", label: "홈", icon: "⌂" },
-  { href: "#/about", route: "about", label: "안내", icon: "i" },
-  { href: "#/day1", route: "day1", label: "7/16", icon: "1" },
-  { href: "#/day2", route: "day2", label: "7/17", icon: "2" },
+  { href: "#/day1", route: "day1", label: "DAY1", icon: "1" },
+  { href: "#/day2", route: "day2", label: "DAY2", icon: "2" },
   { href: "#/photos", route: "photos", label: "사진", icon: "□" },
 ];
 

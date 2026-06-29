@@ -762,7 +762,7 @@ a {
   bottom: 12px;
   display: grid;
   width: min(calc(100% - 24px), 406px);
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 4px;
   transform: translateX(50%);
   border: 1px solid rgba(255, 255, 255, 0.72);
