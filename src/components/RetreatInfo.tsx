@@ -42,7 +42,7 @@ export function RetreatInfo() {
           <div>
             <span aria-hidden="true">○</span>
             <p>목표</p>
-            <strong>기도의 자리로 나아가기</strong>
+            <strong>고민, 걱정, 두려움이 있을 때 기도의 자리로 나아가라!</strong>
           </div>
           <div>
             <span aria-hidden="true">◷</span>
@@ -63,19 +63,18 @@ export function RetreatInfo() {
 
       <div className="section-stack">
         <Accordion title="수련회 일정표" icon="~" defaultOpen>
-          <p className="notice">세부 시간표는 확정 후 업데이트됩니다.</p>
           <ul className="timeline-list">
             <li>
               <strong>7/16 목</strong>
-              <span>아이스브레이킹 · 저녁 예배</span>
+              <span>개회예배 · 아이스브레이킹 · 봉사활동 · 신앙 프로그램 · 저녁 집회</span>
             </li>
             <li>
               <strong>7/17 금</strong>
-              <span>아침묵상 · 강의 · 체육대회 · 저녁 예배</span>
+              <span>아침묵상 · 장로님 간증 · 체육대회 · 팀별 모임 · 저녁 집회</span>
             </li>
             <li>
               <strong>7/18 토</strong>
-              <span>아침묵상 · 마무리 일정</span>
+              <span>아침 묵상 · 폐회예배</span>
             </li>
           </ul>
         </Accordion>
