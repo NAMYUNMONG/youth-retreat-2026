@@ -1,3 +1,5 @@
+import { Accordion } from "./Accordion";
+
 export type TimeTableItem = {
   time: string;
   title: string;
@@ -10,19 +12,14 @@ type TimeTableProps = {
 export function TimeTable({ items }: TimeTableProps) {
   if (items.length === 0) {
     return (
-      <article className="time-table">
-        <h3>타임테이블</h3>
+      <Accordion title="오늘의 일정" icon="◷">
         <p className="notice">세부 시간표는 확정 후 업데이트됩니다.</p>
-      </article>
+      </Accordion>
     );
   }
 
   return (
-    <article className="time-table">
-      <div className="time-table__header">
-        <span>TIME TABLE</span>
-        <h3>타임테이블</h3>
-      </div>
+    <Accordion title="오늘의 일정" icon="◷" defaultOpen>
       <ol className="time-table__list" aria-label="상세 일정">
         {items.map((item) => (
           <li key={`${item.time}-${item.title}`}>
@@ -31,6 +28,6 @@ export function TimeTable({ items }: TimeTableProps) {
           </li>
         ))}
       </ol>
-    </article>
+    </Accordion>
   );
 }
