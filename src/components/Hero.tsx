@@ -21,7 +21,7 @@ export function Hero() {
           <mark className="hero__switch hero__switch--off">FF,</mark>
           <mark className="hero__switch hero__switch--on">N</mark>
         </h1>
-        <p className="hero__copy">염려를 멈추고, 기도를 시작하라</p>
+        <p className="hero__copy">"염려를 멈추고, 기도를 시작하라"</p>
         <div className="hero__scripture" aria-label="빌립보서 4장 6절부터 7절">
           <p className="hero__verse">빌립보서 4장 6–7절</p>
           <p className="hero__scripture-line">

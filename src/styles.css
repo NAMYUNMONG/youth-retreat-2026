@@ -249,10 +249,12 @@ a {
   width: max-content;
   max-width: 100%;
   margin: 22px 0 14px;
+  margin-left: auto;
   color: #063a57;
   font-size: clamp(0.82rem, 3.6vw, 1rem);
   font-weight: 800;
   line-height: 1.55;
+  text-align: right;
   word-break: keep-all;
   white-space: nowrap;
 }
