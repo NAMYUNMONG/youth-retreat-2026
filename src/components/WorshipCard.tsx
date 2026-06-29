@@ -1,5 +1,6 @@
 import { NotePad } from "./NotePad";
 import { ProgramCard } from "./ProgramCard";
+import { SheetItem, SheetViewer } from "./SheetViewer";
 
 type WorshipCardProps = {
   dayLabel: string;
@@ -7,6 +8,7 @@ type WorshipCardProps = {
   sheetUrl: string;
   sermonPassage: string;
   sermonTopic: string;
+  sheets?: SheetItem[];
   noteKey: string;
   onEmptyLink: (message: string) => void;
 };
@@ -19,6 +21,7 @@ export function WorshipCard({
   sheetUrl,
   sermonPassage,
   sermonTopic,
+  sheets = [],
   noteKey,
   onEmptyLink,
 }: WorshipCardProps) {
@@ -50,6 +53,7 @@ export function WorshipCard({
           악보 열기
         </button>
       </div>
+      <SheetViewer dayLabel={dayLabel} sheets={sheets} />
       <dl className="sermon-meta">
         <div>
           <dt>설교 말씀 본문</dt>

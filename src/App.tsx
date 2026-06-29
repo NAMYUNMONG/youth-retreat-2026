@@ -48,6 +48,7 @@ function Day1Page({ showToast }: { showToast: (message: string) => void }) {
           sheetUrl={retreatConfig.day1.sheetUrl}
           sermonPassage={retreatConfig.day1.sermonPassage}
           sermonTopic={retreatConfig.day1.sermonTopic}
+          sheets={retreatConfig.day1.sheets}
           noteKey="day1-sermon-note"
           onEmptyLink={showToast}
         />
@@ -88,6 +89,7 @@ function Day2Page({ showToast }: { showToast: (message: string) => void }) {
           sheetUrl={retreatConfig.day2.sheetUrl}
           sermonPassage={retreatConfig.day2.sermonPassage}
           sermonTopic={retreatConfig.day2.sermonTopic}
+          sheets={retreatConfig.day2.sheets}
           noteKey="day2-sermon-note"
           onEmptyLink={showToast}
         />
