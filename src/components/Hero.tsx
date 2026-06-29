@@ -3,7 +3,7 @@ export function Hero() {
     <header id="home" className="hero page-section">
       <div className="hero__top">
         <span>2026 YOUTH SUMMER RETREAT</span>
-        <a href="#photos" className="top-photo-link" aria-label="사진공유 섹션으로 이동">
+        <a href="#/photos" className="top-photo-link" aria-label="사진공유 페이지로 이동">
           사진공유
         </a>
       </div>

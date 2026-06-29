@@ -105,15 +105,15 @@ export function RetreatInfo() {
           <nav className="day-link-panel" aria-label="날짜별 일정 바로가기">
             <p>날짜별 자세한 일정 보기</p>
             <div className="day-link-panel__buttons">
-              <a href="#day1" aria-label="DAY 1 7월 16일 일정으로 이동">
+              <a href="#/day1" aria-label="DAY 1 7월 16일 페이지로 이동">
                 <strong>DAY 1</strong>
                 <span>7/16 목</span>
               </a>
-              <a href="#day2" aria-label="DAY 2 7월 17일 일정으로 이동">
+              <a href="#/day2" aria-label="DAY 2 7월 17일 페이지로 이동">
                 <strong>DAY 2</strong>
                 <span>7/17 금</span>
               </a>
-              <a href="#day3" aria-label="DAY 3 7월 18일 일정으로 이동">
+              <a href="#/day3" aria-label="DAY 3 7월 18일 페이지로 이동">
                 <strong>DAY 3</strong>
                 <span>7/18 토</span>
               </a>

@@ -70,6 +70,64 @@ a {
   margin-bottom: 28px;
 }
 
+.subpage-top {
+  position: relative;
+  margin: 0 -16px 18px;
+  padding: 18px 18px 28px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 88% 18%, rgba(255, 230, 107, 0.7) 0 2rem, transparent 2.1rem),
+    linear-gradient(135deg, rgba(6, 58, 87, 0.98), rgba(7, 139, 147, 0.94));
+  color: #ffffff;
+}
+
+.subpage-top::after {
+  content: "";
+  position: absolute;
+  right: -28px;
+  bottom: -46px;
+  width: 176px;
+  height: 96px;
+  border-radius: 50% 50% 0 0;
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.subpage-top a,
+.subpage-top span,
+.subpage-top h1 {
+  position: relative;
+  z-index: 1;
+}
+
+.subpage-top a {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  border-radius: 999px;
+  padding: 7px 12px;
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  font-size: 0.84rem;
+  font-weight: 900;
+}
+
+.subpage-top span {
+  display: block;
+  margin-top: 26px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.76rem;
+  font-weight: 900;
+}
+
+.subpage-top h1 {
+  margin: 5px 0 0;
+  color: #ffffff;
+  font-size: 2.3rem;
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
 .hero {
   position: relative;
   min-height: 520px;
@@ -737,7 +795,8 @@ a {
 }
 
 .bottom-nav a:hover,
-.bottom-nav a:focus-visible {
+.bottom-nav a:focus-visible,
+.bottom-nav a.is-active {
   background: rgba(255, 255, 255, 0.13);
 }
 
