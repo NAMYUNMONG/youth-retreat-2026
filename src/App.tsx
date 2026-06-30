@@ -7,6 +7,7 @@ import { PhotoShareCard } from "./components/PhotoShareCard";
 import { ProgramCard } from "./components/ProgramCard";
 import { RetreatInfo } from "./components/RetreatInfo";
 import { SheetItem, SheetViewer } from "./components/SheetViewer";
+import { SiteFooter } from "./components/SiteFooter";
 import { TimeTable } from "./components/TimeTable";
 import { Toast } from "./components/Toast";
 import { WorshipCard } from "./components/WorshipCard";
@@ -246,7 +247,10 @@ function App() {
 
   return (
     <>
-      <main className="app-shell">{renderPage()}</main>
+      <main className="app-shell">
+        {renderPage()}
+        {route !== "home" && <SiteFooter />}
+      </main>
       <BottomNavigation currentRoute={route === "day1Sheets" ? "day1" : route === "day2Sheets" ? "day2" : route} />
       <Toast message={toast} onClose={() => setToast("")} />
     </>

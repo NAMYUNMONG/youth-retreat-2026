@@ -67,7 +67,7 @@ export function RetreatInfo() {
             </li>
             <li>
               <strong>7/17 금</strong>
-              <span>아침묵상 · 장로님 간증 · 체육대회 · 팀별 모임 · 저녁 집회</span>
+              <span>아침묵상 · 간증시간 · 체육대회 · 팀별 모임 · 저녁 집회</span>
             </li>
             <li>
               <strong>7/18 토</strong>

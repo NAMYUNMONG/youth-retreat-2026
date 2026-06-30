@@ -70,6 +70,21 @@ a {
   margin-bottom: 28px;
 }
 
+.site-footer {
+  display: flex;
+  justify-content: center;
+  margin: 38px auto 8px;
+  padding: 16px 12px;
+}
+
+.site-footer img {
+  display: block;
+  width: 129px;
+  max-width: 46%;
+  height: auto;
+  object-fit: contain;
+}
+
 .subpage-top {
   position: relative;
   margin: 0 -16px 18px;
@@ -148,6 +163,17 @@ a {
   font-size: 0.86rem;
   font-weight: 800;
   letter-spacing: 0;
+}
+
+.hero__church-logo {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  display: block;
+  width: clamp(68px, 21vw, 82px);
+  height: auto;
+  object-fit: contain;
+  transform: translateY(-50%);
 }
 
 .top-photo-link {

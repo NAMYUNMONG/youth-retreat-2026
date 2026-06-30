@@ -2,7 +2,12 @@ export function Hero() {
   return (
     <header id="home" className="hero page-section">
       <div className="hero__top">
-        <span>미아중앙감리교회 청년부</span>
+        <span>미아중앙교회 청년부</span>
+        <img
+          className="hero__church-logo"
+          src="/youth-retreat-2026/images/MIACC_CI_2-transparent.png"
+          alt="미아중앙교회"
+        />
       </div>
       <div className="sun" aria-hidden="true" />
       <div className="bubble bubble--one" aria-hidden="true" />
