@@ -709,6 +709,18 @@ a {
   padding-top: 2px;
 }
 
+.program-accordion__meta {
+  margin: 7px 0 0;
+  color: #315f70;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.program-accordion__meta strong {
+  color: #07324a;
+  font-weight: 900;
+}
+
 .program-accordion__content > .muted {
   margin-top: 10px;
   border: 1px solid #badbd5;

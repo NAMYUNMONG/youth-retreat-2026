@@ -91,9 +91,12 @@ function Day2Page({ showToast }: { showToast: (message: string) => void }) {
         />
         <ProgramCard
           eyebrow="SESSION"
-          title="간증시간(고광현 장로)"
-          description="강의 주제와 자료는 확정 후 확인할 수 있습니다."
+          title="간증시간"
         >
+          <p className="program-accordion__meta">
+            간증자: <strong>고광현 장로</strong>
+          </p>
+          <p className="muted">강의 주제와 자료는 확정 후 확인할 수 있습니다.</p>
           <NotePad
             storageKey="day2-lecture-note"
             label="DAY 2 강의 정리 노트"
