@@ -588,6 +588,17 @@ a {
   stroke-width: 1.7;
 }
 
+.retreat-info-icon {
+  display: block;
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
 .accordion__trailing {
   display: inline-flex;
   flex: 0 0 auto;
@@ -667,7 +678,9 @@ a {
 .checklist {
   display: grid;
   gap: 10px;
-  padding-top: 12px;
+  margin: 0;
+  padding: 12px 0 0;
+  list-style: none;
 }
 
 .checklist__item {
@@ -681,12 +694,6 @@ a {
   background: #ffffff;
   color: #083b56;
   font-weight: 800;
-}
-
-.checklist input {
-  width: 22px;
-  height: 22px;
-  accent-color: #088c96;
 }
 
 .day-header {

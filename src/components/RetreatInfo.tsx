@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import { Accordion } from "./Accordion";
+import { RetreatInfoIcon } from "./RetreatInfoIcon";
 
 const checklistItems = [
   "개인 준비물 공지 확인",
@@ -8,28 +8,7 @@ const checklistItems = [
   "추가 안내사항 확인",
 ];
 
-const checklistKey = "retreat-packing-checklist";
-
 export function RetreatInfo() {
-  const [checked, setChecked] = useState<boolean[]>(() => checklistItems.map(() => false));
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const saved = window.localStorage.getItem(checklistKey);
-    if (!saved) return;
-    try {
-      const parsed = JSON.parse(saved);
-      if (Array.isArray(parsed)) setChecked(checklistItems.map((_, index) => Boolean(parsed[index])));
-    } catch {
-      window.localStorage.removeItem(checklistKey);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    window.localStorage.setItem(checklistKey, JSON.stringify(checked));
-  }, [checked]);
-
   return (
     <section id="about" className="page-section">
       <div className="section-heading">
@@ -72,7 +51,7 @@ export function RetreatInfo() {
       </div>
 
       <div className="section-stack">
-        <Accordion title="수련회 일정표" icon="~" defaultOpen>
+        <Accordion title="수련회 프로그램" icon={<RetreatInfoIcon kind="program" />} defaultOpen>
           <ul className="timeline-list">
             <li>
               <strong>7/16 목</strong>
@@ -89,27 +68,18 @@ export function RetreatInfo() {
           </ul>
         </Accordion>
 
-        <Accordion title="수련회 조편성" icon="◇">
+        <Accordion title="수련회 조편성" icon={<RetreatInfoIcon kind="groups" />}>
           <p className="notice">조편성과 조별 리더 정보가 확정되면 업데이트됩니다.</p>
         </Accordion>
 
-        <Accordion title="수련회 준비물" icon="✓">
-          <div className="checklist" role="group" aria-label="수련회 준비물 체크리스트">
-            {checklistItems.map((item, index) => (
-              <label key={item} className="checklist__item">
-                <input
-                  type="checkbox"
-                  checked={checked[index]}
-                  onChange={() =>
-                    setChecked((current) =>
-                      current.map((value, currentIndex) => (currentIndex === index ? !value : value)),
-                    )
-                  }
-                />
-                <span>{item}</span>
-              </label>
+        <Accordion title="수련회 준비물" icon={<RetreatInfoIcon kind="packing" />}>
+          <ul className="checklist" aria-label="수련회 준비물 목록">
+            {checklistItems.map((item) => (
+              <li key={item} className="checklist__item">
+                {item}
+              </li>
             ))}
-          </div>
+          </ul>
         </Accordion>
       </div>
     </section>

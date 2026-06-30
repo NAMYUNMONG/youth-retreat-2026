@@ -28,6 +28,7 @@ body {
 }
 
 .sun {
+  top: 64px;
   width: 78px;
   height: 78px;
   background: var(--clean-yellow);
@@ -138,6 +139,22 @@ body {
   color: var(--clean-teal-dark);
 }
 
+.accordion__leading-icon:has(.retreat-info-icon) {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  place-items: center;
+  border-radius: 11px;
+  background: var(--clean-mint);
+  color: var(--clean-teal-dark);
+}
+
+.accordion__title .retreat-info-icon {
+  width: 20px;
+  height: 20px;
+}
+
 .accordion__title .program-icon {
   width: 20px;
   height: 20px;
@@ -197,10 +214,6 @@ body {
 .checklist__item {
   border: 0;
   background: #f5faf9;
-}
-
-.checklist input {
-  accent-color: var(--clean-teal);
 }
 
 .day-header {
