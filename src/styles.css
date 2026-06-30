@@ -657,12 +657,47 @@ a {
   word-break: keep-all;
 }
 
+.schedule {
+  --schedule-accent: #0789b8;
+  --schedule-accent-dark: #075477;
+  --schedule-soft: #daf4ff;
+}
+
+.schedule .accordion {
+  border-color: color-mix(in srgb, var(--schedule-accent) 35%, white);
+  box-shadow: 0 18px 38px color-mix(in srgb, var(--schedule-accent) 20%, transparent);
+}
+
+.schedule .accordion__trigger {
+  background: linear-gradient(135deg, var(--schedule-accent-dark), var(--schedule-accent));
+  color: #ffffff;
+}
+
+.schedule .accordion__chevron {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.schedule .accordion__panel {
+  padding-top: 14px;
+  background: color-mix(in srgb, var(--schedule-soft) 62%, white);
+}
+
+.schedule .time-table__list li {
+  border-left: 4px solid var(--schedule-accent);
+  background: var(--schedule-soft);
+}
+
+.schedule .time-table__list time {
+  color: var(--schedule-accent-dark);
+}
+
 .program-card h3 {
   font-size: 1.22rem;
 }
 
-.program-card__eyebrow {
-  margin: 0 0 5px;
+.program-accordion__content {
+  padding-top: 2px;
 }
 
 .button-row {
@@ -904,30 +939,35 @@ a {
 }
 
 .bottom-nav a {
-  display: grid;
+  display: flex;
   min-width: 0;
-  min-height: 52px;
-  place-items: center;
-  border-radius: 17px;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
-  font-size: 0.72rem;
+  font-size: 0.88rem;
   font-weight: 800;
-}
-
-.bottom-nav span {
-  display: grid;
-  width: 22px;
-  height: 22px;
-  place-items: center;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.14);
-  font-size: 0.82rem;
+  letter-spacing: -0.02em;
+  transition:
+    background 140ms ease,
+    border-color 140ms ease,
+    color 140ms ease;
 }
 
 .bottom-nav a:hover,
-.bottom-nav a:focus-visible,
+.bottom-nav a:focus-visible {
+  border-color: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.16);
+}
+
 .bottom-nav a.is-active {
-  background: rgba(255, 255, 255, 0.13);
+  border-color: #ffe66b;
+  background: #ffe66b;
+  color: #07324a;
+  box-shadow: 0 6px 16px rgba(255, 230, 107, 0.2);
 }
 
 .toast {

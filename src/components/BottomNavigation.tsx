@@ -1,9 +1,9 @@
 const items = [
-  { href: "#/", route: "home", label: "홈", icon: "⌂" },
-  { href: "#/day1", route: "day1", label: "DAY1", icon: "1" },
-  { href: "#/day2", route: "day2", label: "DAY2", icon: "2" },
-  { href: "#/day3", route: "day3", label: "DAY3", icon: "3" },
-  { href: "#/photos", route: "photos", label: "사진", icon: "□" },
+  { href: "#/", route: "home", label: "홈" },
+  { href: "#/day1", route: "day1", label: "DAY1" },
+  { href: "#/day2", route: "day2", label: "DAY2" },
+  { href: "#/day3", route: "day3", label: "DAY3" },
+  { href: "#/photos", route: "photos", label: "사진" },
 ];
 
 type BottomNavigationProps = {
@@ -21,7 +21,6 @@ export function BottomNavigation({ currentRoute }: BottomNavigationProps) {
           aria-current={currentRoute === item.route ? "page" : undefined}
           aria-label={`${item.label} 페이지로 이동`}
         >
-          <span aria-hidden="true">{item.icon}</span>
           {item.label}
         </a>
       ))}
