@@ -46,25 +46,30 @@ export function WorshipCard({
 
   return (
     <ProgramCard eyebrow={dayLabel} title="저녁 예배">
-      <div className="button-row">
-        <button
-          type="button"
-          className="button"
-          onClick={() => openLink(playlistUrl)}
-          aria-label={`${dayLabel} 찬양 콘티 플레이리스트 열기`}
-        >
-          찬양 콘티 플레이리스트
-        </button>
-        <button
-          type="button"
-          className="button button--secondary"
-          onClick={openSheets}
-          aria-label={`${dayLabel} 악보 열기`}
-        >
-          악보 열기
-        </button>
-      </div>
       <dl className="sermon-meta">
+        <div className="sermon-meta__praise">
+          <dt>찬양</dt>
+          <dd>
+            <div className="button-row sermon-meta__actions">
+              <button
+                type="button"
+                className="button button--secondary button--small"
+                onClick={() => openLink(playlistUrl)}
+                aria-label={`${dayLabel} 찬양 플레이리스트 열기`}
+              >
+                찬양 플레이리스트
+              </button>
+              <button
+                type="button"
+                className="button button--secondary button--small"
+                onClick={openSheets}
+                aria-label={`${dayLabel} 악보 열기`}
+              >
+                악보 열기
+              </button>
+            </div>
+          </dd>
+        </div>
         <div>
           <dt>설교 말씀 본문</dt>
           <dd>{sermonPassage || "추후 업데이트 예정"}</dd>

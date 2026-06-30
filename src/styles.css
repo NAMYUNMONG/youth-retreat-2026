@@ -514,6 +514,7 @@ a {
 
 .accordion__panel {
   padding: 0 16px 16px;
+  background: transparent;
 }
 
 .notice,
@@ -542,8 +543,12 @@ a {
 .timeline-list li {
   display: grid;
   gap: 3px;
+  border: 1px solid #badbd5;
   border-left: 4px solid #0da9b1;
+  border-radius: 15px;
   padding: 8px 0 8px 12px;
+  background: #ffffff;
+  box-shadow: 0 5px 12px rgba(5, 57, 82, 0.07);
 }
 
 .timeline-list span {
@@ -555,6 +560,7 @@ a {
 .checklist {
   display: grid;
   gap: 10px;
+  padding-top: 12px;
 }
 
 .checklist__item {
@@ -564,7 +570,8 @@ a {
   min-height: 44px;
   border-radius: 15px;
   padding: 10px 12px;
-  background: #e8fff9;
+  border: 1px solid #badbd5;
+  background: #ffffff;
   color: #083b56;
   font-weight: 800;
 }
@@ -641,6 +648,7 @@ a {
   border-radius: 15px;
   padding: 10px 11px;
   background: #e9fff9;
+  box-shadow: 0 5px 12px rgba(5, 57, 82, 0.08);
 }
 
 .time-table__list time {
@@ -680,12 +688,13 @@ a {
 
 .schedule .accordion__panel {
   padding-top: 14px;
-  background: color-mix(in srgb, var(--schedule-soft) 62%, white);
+  background: transparent;
 }
 
 .schedule .time-table__list li {
+  border: 1px solid color-mix(in srgb, var(--schedule-accent) 38%, white);
   border-left: 4px solid var(--schedule-accent);
-  background: var(--schedule-soft);
+  background: #ffffff;
 }
 
 .schedule .time-table__list time {
@@ -698,6 +707,14 @@ a {
 
 .program-accordion__content {
   padding-top: 2px;
+}
+
+.program-accordion__content > .muted {
+  margin-top: 10px;
+  border: 1px solid #badbd5;
+  border-radius: 15px;
+  padding: 11px 12px;
+  background: #ffffff;
 }
 
 .button-row {
@@ -815,13 +832,15 @@ a {
 .sermon-meta {
   display: grid;
   gap: 10px;
-  margin: 14px 0;
+  margin: 4px 0 14px;
 }
 
-.sermon-meta div {
+.sermon-meta > div {
+  border: 1px solid #badbd5;
   border-radius: 16px;
   padding: 12px;
-  background: #e9fff9;
+  background: #ffffff;
+  box-shadow: 0 5px 12px rgba(5, 57, 82, 0.07);
 }
 
 .sermon-meta dt {
@@ -836,6 +855,30 @@ a {
   font-weight: 900;
   line-height: 1.5;
   word-break: keep-all;
+}
+
+.button-row.sermon-meta__actions {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+  margin-top: 5px;
+}
+
+.sermon-meta__actions .button {
+  width: 100%;
+  min-width: 0;
+}
+
+.sermon-meta .sermon-meta__praise {
+  padding-block: 6px;
+}
+
+.sermon-meta__praise dd {
+  margin-top: 2px;
+}
+
+.sermon-meta__praise .button {
+  min-height: 34px;
+  padding-block: 6px;
 }
 
 .note-pad {
