@@ -1,9 +1,11 @@
 import { NotePad } from "./NotePad";
 import { ProgramCard } from "./ProgramCard";
+import { ProgramIcon } from "./ProgramIcon";
 import { SheetItem } from "./SheetViewer";
 
 type WorshipCardProps = {
   dayLabel: string;
+  time: string;
   playlistUrl: string;
   sheetUrl: string;
   sermonPassage: string;
@@ -18,6 +20,7 @@ const notePlaceholder = "설교를 들으며 마음에 남은 말씀과 기도�
 
 export function WorshipCard({
   dayLabel,
+  time,
   playlistUrl,
   sheetUrl,
   sermonPassage,
@@ -45,7 +48,7 @@ export function WorshipCard({
   };
 
   return (
-    <ProgramCard eyebrow={dayLabel} title="저녁 예배">
+    <ProgramCard eyebrow={dayLabel} title="저녁 예배" icon={<ProgramIcon kind="worship" />} time={time}>
       <dl className="sermon-meta">
         <div className="sermon-meta__praise">
           <dt>찬양</dt>

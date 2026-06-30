@@ -4,13 +4,15 @@ import { Accordion } from "./Accordion";
 type ProgramCardProps = {
   eyebrow?: string;
   title: string;
+  icon?: ReactNode;
+  time?: string;
   description?: string;
   children?: ReactNode;
 };
 
-export function ProgramCard({ title, description, children }: ProgramCardProps) {
+export function ProgramCard({ title, icon, time, description, children }: ProgramCardProps) {
   return (
-    <Accordion title={title}>
+    <Accordion title={title} icon={icon} meta={time}>
       <div className="program-accordion__content">
         {description && <p className="muted">{description}</p>}
         {children}

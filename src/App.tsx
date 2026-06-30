@@ -5,6 +5,7 @@ import { Hero } from "./components/Hero";
 import { NotePad } from "./components/NotePad";
 import { PhotoShareCard } from "./components/PhotoShareCard";
 import { ProgramCard } from "./components/ProgramCard";
+import { ProgramIcon } from "./components/ProgramIcon";
 import { RetreatInfo } from "./components/RetreatInfo";
 import { SheetItem, SheetViewer } from "./components/SheetViewer";
 import { SiteFooter } from "./components/SiteFooter";
@@ -37,17 +38,23 @@ function PageTop({
   title,
   backHref = "#/",
   backLabel = "홈으로",
+  showBack = true,
+  compact = false,
 }: {
   label: string;
   title: string;
   backHref?: string;
   backLabel?: string;
+  showBack?: boolean;
+  compact?: boolean;
 }) {
   return (
-    <header className="subpage-top">
-      <a href={backHref} aria-label={`${backLabel} 이동`}>
-        {backLabel}
-      </a>
+    <header className={`subpage-top${compact ? " subpage-top--compact" : ""}`}>
+      {showBack && (
+        <a href={backHref} aria-label={`${backLabel} 이동`}>
+          {backLabel}
+        </a>
+      )}
       <span>{label}</span>
       <h1>{title}</h1>
     </header>
@@ -62,10 +69,13 @@ function Day1Page({ showToast }: { showToast: (message: string) => void }) {
         <ProgramCard
           eyebrow="ICE BREAKING"
           title="아이스브레이킹 프로그램"
+          icon={<ProgramIcon kind="icebreaker" />}
+          time="13:30–15:00"
           description="프로그램 안내와 진행 순서는 확정 후 업데이트됩니다."
         />
         <WorshipCard
           dayLabel="DAY 1"
+          time="19:30–22:00"
           playlistUrl={retreatConfig.day1.playlistUrl}
           sheetUrl={retreatConfig.day1.sheetUrl}
           sermonPassage={retreatConfig.day1.sermonPassage}
@@ -88,11 +98,15 @@ function Day2Page({ showToast }: { showToast: (message: string) => void }) {
         <ProgramCard
           eyebrow="MORNING"
           title="아침묵상"
+          icon={<ProgramIcon kind="meditation" />}
+          time="08:00–09:00"
           description="아침묵상 본문과 나눔 가이드는 추후 업데이트됩니다."
         />
         <ProgramCard
           eyebrow="SESSION"
           title="간증시간"
+          icon={<ProgramIcon kind="testimony" />}
+          time="09:00–11:00"
         >
           <p className="program-accordion__meta">
             간증자: <strong>고광현 장로</strong>
@@ -107,10 +121,13 @@ function Day2Page({ showToast }: { showToast: (message: string) => void }) {
         <ProgramCard
           eyebrow="TEAM"
           title="체육대회 및 팀별 모임"
+          icon={<ProgramIcon kind="team" />}
+          time="13:30–18:00"
           description="체육대회 종목과 팀별 모임 안내는 조편성과 함께 공지됩니다."
         />
         <WorshipCard
           dayLabel="DAY 2"
+          time="19:30–22:00"
           playlistUrl={retreatConfig.day2.playlistUrl}
           sheetUrl={retreatConfig.day2.sheetUrl}
           sermonPassage={retreatConfig.day2.sermonPassage}
@@ -154,6 +171,8 @@ function Day3Page() {
         <ProgramCard
           eyebrow="CLOSING MORNING"
           title="아침묵상"
+          icon={<ProgramIcon kind="meditation" />}
+          time="08:00–09:00"
           description="마지막 아침, 하나님께서 주신 마음을 조용히 되새깁니다."
         >
           <NotePad
@@ -170,7 +189,7 @@ function Day3Page() {
 function PhotosPage({ showToast }: { showToast: (message: string) => void }) {
   return (
     <>
-      <PageTop label="PHOTO SHARE" title="사진공유방" />
+      <PageTop label="PHOTO SHARE" title="사진공유방" showBack={false} compact />
       <section id="photos" className="page-section photos-section">
         <div className="photo-grid">
           <PhotoShareCard

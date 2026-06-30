@@ -143,6 +143,19 @@ a {
   letter-spacing: 0;
 }
 
+.subpage-top.subpage-top--compact {
+  padding-top: 16px;
+  padding-bottom: 18px;
+}
+
+.subpage-top.subpage-top--compact span {
+  margin-top: 0;
+}
+
+.subpage-top.subpage-top--compact h1 {
+  font-size: 2rem;
+}
+
 .hero {
   position: relative;
   min-height: 640px;
@@ -558,9 +571,39 @@ a {
 
 .accordion__title {
   display: inline-flex;
+  min-width: 0;
   align-items: center;
   gap: 8px;
   font-weight: 900;
+}
+
+.program-icon {
+  display: block;
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.accordion__trailing {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.accordion__meta {
+  border-radius: 999px;
+  padding: 5px 8px;
+  background: #e9fff9;
+  color: #3b6675;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
 .accordion__chevron {

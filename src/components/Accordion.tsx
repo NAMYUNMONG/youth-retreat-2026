@@ -2,12 +2,13 @@ import { ReactNode, useId, useState } from "react";
 
 type AccordionProps = {
   title: ReactNode;
-  icon?: string;
+  icon?: ReactNode;
+  meta?: string;
   children: ReactNode;
   defaultOpen?: boolean;
 };
 
-export function Accordion({ title, icon, children, defaultOpen = false }: AccordionProps) {
+export function Accordion({ title, icon, meta, children, defaultOpen = false }: AccordionProps) {
   const [open, setOpen] = useState(defaultOpen);
   const id = useId();
 
@@ -22,11 +23,18 @@ export function Accordion({ title, icon, children, defaultOpen = false }: Accord
           onClick={() => setOpen((value) => !value)}
         >
           <span className="accordion__title">
-            {icon && <span aria-hidden="true">{icon}</span>}
+            {icon && (
+              <span className="accordion__leading-icon" aria-hidden="true">
+                {icon}
+              </span>
+            )}
             {title}
           </span>
-          <span className="accordion__chevron" aria-hidden="true">
-            {open ? "−" : "+"}
+          <span className="accordion__trailing">
+            {meta && <span className="accordion__meta">{meta}</span>}
+            <span className="accordion__chevron" aria-hidden="true">
+              {open ? "−" : "+"}
+            </span>
           </span>
         </button>
       </h3>
