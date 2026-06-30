@@ -97,11 +97,11 @@ function Day2Page({ showToast }: { showToast: (message: string) => void }) {
           <p className="program-accordion__meta">
             간증자: <strong>고광현 장로</strong>
           </p>
-          <p className="muted">강의 주제와 자료는 확정 후 확인할 수 있습니다.</p>
+          <p className="muted">간증 제목: 추후 업데이트 예정</p>
           <NotePad
             storageKey="day2-lecture-note"
-            label="DAY 2 강의 정리 노트"
-            placeholder="강의에서 기억하고 싶은 내용, 질문, 적용점을 자유롭게 적어보세요."
+            label="DAY 2 간증 정리 노트"
+            placeholder="간증에서 기억하고 싶은 내용, 질문, 적용점을 자유롭게 적어보세요."
           />
         </ProgramCard>
         <ProgramCard

@@ -483,6 +483,44 @@ a {
   word-break: keep-all;
 }
 
+.retreat-location {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.retreat-location__text {
+  min-width: 0;
+}
+
+.retreat-location__address {
+  color: #568593;
+}
+
+.retreat-location__map-link {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  place-items: center;
+  border: 1px solid rgba(7, 139, 147, 0.28);
+  border-radius: 50%;
+  background: #ffffff;
+  color: #078b93;
+  box-shadow: 0 5px 12px rgba(5, 57, 82, 0.1);
+}
+
+.retreat-location__map-link svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
 .section-stack,
 .photo-grid {
   display: grid;

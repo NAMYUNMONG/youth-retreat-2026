@@ -49,9 +49,22 @@ export function RetreatInfo() {
           </div>
           <div>
             <p>장소</p>
-            <strong>
-              <a href="https://naver.me/xdjoQdGo" target="_blank" rel="noreferrer">
-                인천 무의교회
+            <strong className="retreat-location">
+              <span className="retreat-location__text">
+                인천 무의교회 <span className="retreat-location__address">(인천 중구 소무의로 30)</span>
+              </span>
+              <a
+                className="retreat-location__map-link"
+                href="https://naver.me/xdjoQdGo"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="인천 무의교회 지도에서 보기"
+                title="지도에서 보기"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 21s7-6.08 7-13a7 7 0 1 0-14 0c0 6.92 7 13 7 13Z" />
+                  <circle cx="12" cy="8" r="2.5" />
+                </svg>
               </a>
             </strong>
           </div>
