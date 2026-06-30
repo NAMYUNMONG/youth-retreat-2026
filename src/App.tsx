@@ -91,7 +91,7 @@ function Day2Page({ showToast }: { showToast: (message: string) => void }) {
         />
         <ProgramCard
           eyebrow="SESSION"
-          title="고광현 장로님 강의 세션"
+          title="간증시간(고광현 장로)"
           description="강의 주제와 자료는 확정 후 확인할 수 있습니다."
         >
           <NotePad
