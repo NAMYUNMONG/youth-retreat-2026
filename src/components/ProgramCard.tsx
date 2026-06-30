@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { Accordion } from "./Accordion";
 
 type ProgramCardProps = {
   eyebrow?: string;
@@ -7,13 +8,13 @@ type ProgramCardProps = {
   children?: ReactNode;
 };
 
-export function ProgramCard({ eyebrow, title, description, children }: ProgramCardProps) {
+export function ProgramCard({ title, description, children }: ProgramCardProps) {
   return (
-    <article className="program-card">
-      {eyebrow && <p className="program-card__eyebrow">{eyebrow}</p>}
-      <h3>{title}</h3>
-      {description && <p className="muted">{description}</p>}
-      {children}
-    </article>
+    <Accordion title={title}>
+      <div className="program-accordion__content">
+        {description && <p className="muted">{description}</p>}
+        {children}
+      </div>
+    </Accordion>
   );
 }
