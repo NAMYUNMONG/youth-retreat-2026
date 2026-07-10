@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { BottomNavigation } from "./components/BottomNavigation";
 import { DaySection } from "./components/DaySection";
+import { Day3MeditationContent } from "./components/Day3MeditationContent";
+import { Day2SermonContent } from "./components/Day2SermonContent";
 import { Hero } from "./components/Hero";
 import { NotePad } from "./components/NotePad";
 import { PhotoShareCard } from "./components/PhotoShareCard";
@@ -26,6 +28,8 @@ const routeMap: Record<string, Route> = {
   "day2/sheets": "day2Sheets",
   photos: "photos",
 };
+
+const photoShareVisible = false;
 
 const getRoute = (): Route => {
   if (typeof window === "undefined") return "home";
@@ -136,7 +140,11 @@ function Day2Page({ showToast }: { showToast: (message: string) => void }) {
           sheetPageHref="#/day2/sheets"
           noteKey="day2-sermon-note"
           onEmptyLink={showToast}
-        />
+          noteLabel="DAY 2 저녁예배 설교 노트"
+          notePlaceholder="염려를 하나님께 아뢰며, 오늘 말씀을 통해 깨달은 것과 기도제목을 적어보세요."
+        >
+          <Day2SermonContent />
+        </WorshipCard>
       </DaySection>
     </>
   );
@@ -175,10 +183,11 @@ function Day3Page() {
           time="08:00–09:00"
           description="마지막 아침, 하나님께서 주신 마음을 조용히 되새깁니다."
         >
+          <Day3MeditationContent />
           <NotePad
             storageKey="day3-meditation-note"
-            label="DAY 3 아침묵상 정리 노트"
-            placeholder="수련회를 마치며 붙들고 싶은 말씀과 삶의 적용을 적어보세요."
+            label="DAY 3 아침묵상 적용 노트"
+            placeholder="오늘 아침 하나님께서 주신 마음, 내려놓아야 할 염려, 계속 붙들 기도제목을 적어보세요."
           />
         </ProgramCard>
       </DaySection>
@@ -254,7 +263,7 @@ function App() {
     if (route === "day2Sheets") {
       return <SheetPage dayLabel="DAY 2" title="DAY 2 악보" backHref="#/day2" sheets={retreatConfig.day2.sheets} />;
     }
-    if (route === "photos") return <PhotosPage showToast={showToast} />;
+    if (photoShareVisible && route === "photos") return <PhotosPage showToast={showToast} />;
 
     return (
       <>

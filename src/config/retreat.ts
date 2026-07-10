@@ -64,8 +64,8 @@ export const retreatConfig = {
   day2: {
     playlistUrl: "",
     sheetUrl: "",
-    sermonPassage: "",
-    sermonTopic: "",
+    sermonPassage: "빌립보서 4장 6-7절",
+    sermonTopic: "염려 OFF, 기도 ON",
     sheets: [
       {
         title: "부르신 곳에서",
