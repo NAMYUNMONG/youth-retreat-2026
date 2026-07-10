@@ -3,7 +3,7 @@ const items = [
   { href: "#/day1", route: "day1", label: "DAY1" },
   { href: "#/day2", route: "day2", label: "DAY2" },
   { href: "#/day3", route: "day3", label: "DAY3" },
-  { href: "#/photos", route: "photos", label: "사진" },
+  { href: "#/photos", route: "photos", label: "사진", visible: false },
 ];
 
 type BottomNavigationProps = {
@@ -13,7 +13,7 @@ type BottomNavigationProps = {
 export function BottomNavigation({ currentRoute }: BottomNavigationProps) {
   return (
     <nav className="bottom-nav" aria-label="주요 메뉴">
-      {items.map((item) => (
+      {items.filter((item) => item.visible !== false).map((item) => (
         <a
           key={item.href}
           href={item.href}
