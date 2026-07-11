@@ -55,15 +55,15 @@ export function RetreatInfo() {
           <ul className="timeline-list">
             <li>
               <strong>7/16 목</strong>
-              <span>개회예배 · 아이스브레이킹 · 봉사활동 · 신앙 프로그램 · 저녁 집회</span>
+              <span>교회 출발 · 개회예배 · 아이스브레이킹 · 가정 방문 봉사 · 신앙 프로그램 · 저녁 집회</span>
             </li>
             <li>
               <strong>7/17 금</strong>
-              <span>아침묵상 · 간증시간 · 체육대회 · 팀별 모임 · 저녁 집회</span>
+              <span>아침묵상 · 장로님 간증 · 체육대회 · 팀별 나눔 · 저녁 집회</span>
             </li>
             <li>
               <strong>7/18 토</strong>
-              <span>아침 묵상 · 폐회예배</span>
+              <span>아침묵상 · 폐회예배 · 뒷정리 · 점심식사 · 교회 복귀</span>
             </li>
           </ul>
         </Accordion>
