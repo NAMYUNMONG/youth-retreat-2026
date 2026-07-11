@@ -264,6 +264,17 @@ body {
   box-shadow: 0 3px 10px rgba(4, 71, 92, 0.08);
 }
 
+.schedule-icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
 .schedule .accordion__chevron {
   background: #ffffff;
   color: var(--clean-teal-dark);

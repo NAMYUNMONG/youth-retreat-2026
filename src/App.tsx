@@ -138,7 +138,7 @@ function Day1Page({ showToast }: { showToast: (message: string) => void }) {
 function Day2Page({ showToast }: { showToast: (message: string) => void }) {
   return (
     <>
-      <DaySection id="day2" day="DAY 2" date="7월 17일 금요일" summary="장로님과의 대화, 공동체 게임과 팀별 나눔으로 이어지는 중심 일정">
+      <DaySection id="day2" day="DAY 2" date="7월 17일 금요일" summary="간증, 공동체 게임과 팀별 나눔으로 이어지는 일정">
         <TimeTable items={retreatConfig.schedule.day2} day="day2" />
         <ProgramCard
           eyebrow="MORNING"
