@@ -72,23 +72,38 @@ function Day1Page({ showToast }: { showToast: (message: string) => void }) {
         <TimeTable items={retreatConfig.schedule.day1} day="day1" />
         <ProgramCard
           eyebrow="ICE BREAKING"
-          title="아이스브레이킹 프로그램"
+          title="아이스브레이킹"
           icon={<ProgramIcon kind="icebreaker" />}
           time="13:30–15:00"
-          description="프로그램 안내와 진행 순서는 확정 후 업데이트됩니다."
-        />
+        >
+          <section className="program-item-list" aria-label="DAY 1 아이스브레이킹 프로그램">
+            <ol>
+              <li><span>나 사용 설명서</span></li>
+              <li><span>우리조 TMI 카드</span></li>
+              <li><span>수련회 키워드 경매</span></li>
+            </ol>
+          </section>
+        </ProgramCard>
         <ProgramCard
           eyebrow="VOLUNTEER"
           title="봉사활동"
           icon={<ProgramIcon kind="volunteer" />}
           time="15:00–16:30"
-          description="어르신 가정 방문 봉사활동(6가정)을 위한 안내 공간입니다."
+          description={
+            <>
+              팀을 나누어 어르신 가정을 방문하여 봉사활동을 진행합니다.
+              <br />
+              아래 가이드라인을 따라 봉사활동을 진행해 주세요.
+            </>
+          }
         >
-          <NotePad
-            storageKey="day1-volunteer-guideline"
-            label="DAY 1 봉사활동 가이드라인"
-            placeholder="봉사활동 진행 순서, 가정별 담당자, 유의사항 등 가이드라인을 작성해 주세요."
-          />
+          <section className="volunteer-guidelines" aria-label="DAY 1 봉사활동 가이드라인">
+            <ol>
+              <li><span>가이드라인 1</span></li>
+              <li><span>가이드라인 2</span></li>
+              <li><span>가이드라인 3</span></li>
+            </ol>
+          </section>
         </ProgramCard>
         <ProgramCard
           eyebrow="PRAYER"
@@ -123,7 +138,7 @@ function Day1Page({ showToast }: { showToast: (message: string) => void }) {
 function Day2Page({ showToast }: { showToast: (message: string) => void }) {
   return (
     <>
-      <DaySection id="day2" day="DAY 2" date="7월 17일 금요일" summary="장로님과의 대화, 체육대회와 팀별 나눔으로 이어지는 중심 일정">
+      <DaySection id="day2" day="DAY 2" date="7월 17일 금요일" summary="장로님과의 대화, 공동체 게임과 팀별 나눔으로 이어지는 중심 일정">
         <TimeTable items={retreatConfig.schedule.day2} day="day2" />
         <ProgramCard
           eyebrow="MORNING"
@@ -134,14 +149,13 @@ function Day2Page({ showToast }: { showToast: (message: string) => void }) {
         />
         <ProgramCard
           eyebrow="SESSION"
-          title="장로님 간증"
+          title="간증 시간"
           icon={<ProgramIcon kind="testimony" />}
           time="10:00–12:00"
         >
           <p className="program-accordion__meta">
-            진행: <strong>장로님과의 대화</strong>
+            간증자: <strong>고광현 장로</strong>
           </p>
-          <p className="muted">신앙과 삶에 관한 이야기를 함께 나누는 시간입니다.</p>
           <NotePad
             storageKey="day2-lecture-note"
             label="DAY 2 토크토크 정리 노트"
@@ -150,10 +164,28 @@ function Day2Page({ showToast }: { showToast: (message: string) => void }) {
         </ProgramCard>
         <ProgramCard
           eyebrow="TEAM"
-          title="체육대회 및 팀별 나눔"
+          title="공동체 게임"
           icon={<ProgramIcon kind="team" />}
-          time="14:00–18:00"
-          description="체육대회 후 카페에서 기도제목과 질문을 팀별로 나눕니다."
+          time="14:00–16:00"
+        >
+          <section className="program-item-list" aria-label="DAY 2 공동체 게임 프로그램">
+            <ol>
+              <li><span>방석 뒤집기</span></li>
+              <li><span>성경 OX 퀴즈</span></li>
+              <li><span>이구동성</span></li>
+              <li><span>몸으로 말해요</span></li>
+              <li><span>초성 퀴즈</span></li>
+              <li><span>1초 찬양</span></li>
+              <li><span>AI 성경 그림 맞추기</span></li>
+            </ol>
+          </section>
+        </ProgramCard>
+        <ProgramCard
+          eyebrow="SHARING"
+          title="팀별 나눔"
+          icon={<ProgramIcon kind="team" />}
+          time="16:00–18:00"
+          description="카페에서 기도제목과 질문을 팀별로 나눕니다."
         />
         <WorshipCard
           dayLabel="DAY 2"
@@ -207,7 +239,6 @@ function Day3Page() {
           title="아침묵상"
           icon={<ProgramIcon kind="meditation" />}
           time="08:00–10:00"
-          description="마지막 아침, 하나님께서 주신 마음을 조용히 되새깁니다."
         >
           <Day3MeditationContent />
           <NotePad
@@ -215,6 +246,31 @@ function Day3Page() {
             label="DAY 3 아침묵상 적용 노트"
             placeholder="오늘 아침 하나님께서 주신 마음, 내려놓아야 할 염려, 계속 붙들 기도제목을 적어보세요."
           />
+        </ProgramCard>
+        <ProgramCard
+          eyebrow="CLOSING WORSHIP"
+          title="폐회예배"
+          icon={<ProgramIcon kind="worship" />}
+          time="10:00–11:00"
+          description="함께 예배드리며 수련회 일정을 마무리합니다."
+        />
+        <ProgramCard
+          eyebrow="PALM PRAYER"
+          title="손바닥 기도"
+          icon={<ProgramIcon kind="meditation" />}
+          time="10:00–11:00"
+          description="손가락을 하나씩 짚으며 각 기도 제목을 두고 함께 기도합니다."
+        >
+          <section className="prayer-topics" aria-labelledby="day3-prayer-topics-title">
+            <h3 id="day3-prayer-topics-title">DAY 3 손바닥 기도 제목</h3>
+            <ol>
+              <li><span>기도 제목 1</span></li>
+              <li><span>기도 제목 2</span></li>
+              <li><span>기도 제목 3</span></li>
+              <li><span>기도 제목 4</span></li>
+              <li><span>기도 제목 5</span></li>
+            </ol>
+          </section>
         </ProgramCard>
       </DaySection>
     </>

@@ -684,9 +684,6 @@ a {
 }
 
 .checklist__item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   min-height: 44px;
   border-radius: 15px;
   padding: 10px 12px;
@@ -694,6 +691,22 @@ a {
   background: #ffffff;
   color: #083b56;
   font-weight: 800;
+}
+
+.checklist__subitems {
+  display: grid;
+  gap: 7px;
+  margin: 9px 0 0;
+  padding: 10px 12px 2px 28px;
+  border-top: 1px solid #d8ebe7;
+  color: #335d6c;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.checklist__subitems li::marker {
+  color: #06808e;
 }
 
 .day-header {
@@ -1194,6 +1207,163 @@ a {
 
 .note-pad textarea::placeholder {
   color: #6a8792;
+}
+
+.volunteer-guidelines {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid rgba(6, 128, 142, 0.2);
+  border-radius: 18px;
+  background: rgba(240, 250, 251, 0.88);
+}
+
+.program-item-list {
+  margin-top: 4px;
+  padding: 12px;
+  border: 1px solid rgba(6, 128, 142, 0.2);
+  border-radius: 18px;
+  background: rgba(240, 250, 251, 0.88);
+}
+
+.program-item-list ol {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: program-item;
+}
+
+.program-item-list li {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid rgba(6, 128, 142, 0.16);
+  border-radius: 14px;
+  background: #fff;
+  counter-increment: program-item;
+}
+
+.program-item-list li::before {
+  display: grid;
+  flex: 0 0 26px;
+  width: 26px;
+  height: 26px;
+  margin-right: 10px;
+  place-items: center;
+  border-radius: 50%;
+  background: #06808e;
+  color: #fff;
+  content: counter(program-item);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.program-item-list li span {
+  color: #07324a;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.volunteer-guidelines ol {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: volunteer-guideline;
+}
+
+.volunteer-guidelines li {
+  display: flex;
+  align-items: center;
+  min-height: 58px;
+  padding: 12px 14px;
+  border: 1px solid rgba(6, 128, 142, 0.16);
+  border-radius: 14px;
+  background: #fff;
+  counter-increment: volunteer-guideline;
+}
+
+.volunteer-guidelines li::before {
+  display: grid;
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  margin-right: 12px;
+  place-items: center;
+  border-radius: 50%;
+  background: #06808e;
+  color: #fff;
+  content: counter(volunteer-guideline);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.volunteer-guidelines li span {
+  color: #07324a;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.prayer-topics {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid rgba(181, 126, 36, 0.22);
+  border-radius: 18px;
+  background: rgba(255, 249, 237, 0.92);
+}
+
+.prayer-topics h3 {
+  margin: 0 0 14px;
+  color: #7d5518;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.prayer-topics ol {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: prayer-topic;
+}
+
+.prayer-topics li {
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+  padding: 12px 14px;
+  border: 1px solid rgba(181, 126, 36, 0.18);
+  border-radius: 14px;
+  background: #fff;
+  counter-increment: prayer-topic;
+}
+
+.prayer-topics li::before {
+  display: grid;
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  margin-right: 12px;
+  place-items: center;
+  border-radius: 50%;
+  background: #b57e24;
+  color: #fff;
+  content: counter(prayer-topic);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.prayer-topics li span {
+  color: #624719;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
 .note-pad__footer {

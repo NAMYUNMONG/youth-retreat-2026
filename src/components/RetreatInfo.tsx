@@ -2,10 +2,13 @@ import { Accordion } from "./Accordion";
 import { RetreatInfoIcon } from "./RetreatInfoIcon";
 
 const checklistItems = [
-  "개인 준비물 공지 확인",
-  "성경책 및 필기구",
-  "개인 위생용품",
-  "추가 안내사항 확인",
+  { label: "성경책 및 필기구" },
+  {
+    label: "개인 위생용품",
+    children: ["수건", "치약 및 칫솔", "바디워시 및 샴푸"],
+  },
+  { label: "여벌 의류", children: ["속옷 및 양말"] },
+  { label: "개인 전자용품", children: ["휴대전화 충전기", "헤어드라이어"] },
 ];
 
 export function RetreatInfo() {
@@ -54,16 +57,16 @@ export function RetreatInfo() {
         <Accordion title="수련회 프로그램" icon={<RetreatInfoIcon kind="program" />} defaultOpen>
           <ul className="timeline-list">
             <li>
-              <strong>7/16 목</strong>
-              <span>교회 출발 · 개회예배 · 아이스브레이킹 · 가정 방문 봉사 · 신앙 프로그램 · 저녁 집회</span>
+              <strong>7월 16일 목요일</strong>
+              <span>개회예배 · 아이스브레이킹 · 봉사 활동 · 신앙 프로그램 · 저녁 예배</span>
             </li>
             <li>
-              <strong>7/17 금</strong>
-              <span>아침묵상 · 장로님 간증 · 체육대회 · 팀별 나눔 · 저녁 집회</span>
+              <strong>7월 17일 금요일</strong>
+              <span>아침묵상 · 간증 시간 · 공동체 게임 · 나눔 시간 · 저녁 예배</span>
             </li>
             <li>
-              <strong>7/18 토</strong>
-              <span>아침묵상 · 폐회예배 · 뒷정리 · 점심식사 · 교회 복귀</span>
+              <strong>7월 18일 토요일</strong>
+              <span>아침묵상 · 폐회예배</span>
             </li>
           </ul>
         </Accordion>
@@ -75,8 +78,13 @@ export function RetreatInfo() {
         <Accordion title="수련회 준비물" icon={<RetreatInfoIcon kind="packing" />}>
           <ul className="checklist" aria-label="수련회 준비물 목록">
             {checklistItems.map((item) => (
-              <li key={item} className="checklist__item">
-                {item}
+              <li key={item.label} className="checklist__item">
+                <span>{item.label}</span>
+                {item.children && (
+                  <ul className="checklist__subitems">
+                    {item.children.map((child) => <li key={child}>{child}</li>)}
+                  </ul>
+                )}
               </li>
             ))}
           </ul>

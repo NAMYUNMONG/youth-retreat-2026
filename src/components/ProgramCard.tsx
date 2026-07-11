@@ -6,7 +6,7 @@ type ProgramCardProps = {
   title: ReactNode;
   icon?: ReactNode;
   time?: string;
-  description?: string;
+  description?: ReactNode;
   children?: ReactNode;
 };
 
