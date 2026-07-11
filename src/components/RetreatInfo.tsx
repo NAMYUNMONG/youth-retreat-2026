@@ -62,7 +62,7 @@ export function RetreatInfo() {
             </li>
             <li>
               <strong>7월 17일 금요일</strong>
-              <span>아침묵상 · 간증 시간 · 공동체 게임 · 나눔 시간 · 저녁 예배</span>
+              <span>아침묵상 · 간증 시간 · 공동체 게임 · 나눔 · 저녁 예배</span>
             </li>
             <li>
               <strong>7월 18일 토요일</strong>
