@@ -3,7 +3,7 @@ import { Accordion } from "./Accordion";
 
 type ProgramCardProps = {
   eyebrow?: string;
-  title: string;
+  title: ReactNode;
   icon?: ReactNode;
   time?: string;
   description?: string;

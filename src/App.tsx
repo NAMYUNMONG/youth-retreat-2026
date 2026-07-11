@@ -77,6 +77,32 @@ function Day1Page({ showToast }: { showToast: (message: string) => void }) {
           time="13:30–15:00"
           description="프로그램 안내와 진행 순서는 확정 후 업데이트됩니다."
         />
+        <ProgramCard
+          eyebrow="VOLUNTEER"
+          title="봉사활동"
+          icon={<ProgramIcon kind="volunteer" />}
+          time="15:00–16:30"
+          description="어르신 가정 방문 봉사활동(6가정)을 위한 안내 공간입니다."
+        >
+          <NotePad
+            storageKey="day1-volunteer-guideline"
+            label="DAY 1 봉사활동 가이드라인"
+            placeholder="봉사활동 진행 순서, 가정별 담당자, 유의사항 등 가이드라인을 작성해 주세요."
+          />
+        </ProgramCard>
+        <ProgramCard
+          eyebrow="PRAYER"
+          title={
+            <span>
+              신앙프로그램
+              <br />
+              (손바닥 기도)
+            </span>
+          }
+          icon={<ProgramIcon kind="meditation" />}
+          time="16:30–18:00"
+          description="손바닥 기도를 통해 기도제목을 돌아보고 서로를 위해 함께 기도합니다."
+        />
         <WorshipCard
           dayLabel="DAY 1"
           time="20:00–22:00"
