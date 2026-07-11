@@ -114,7 +114,7 @@ function Day1Page({ showToast }: { showToast: (message: string) => void }) {
               (손바닥 기도)
             </span>
           }
-          icon={<ProgramIcon kind="meditation" />}
+          icon={<ProgramIcon kind="palm-prayer" />}
           time="16:30–18:00"
           description="손바닥 기도를 통해 기도제목을 돌아보고 서로를 위해 함께 기도합니다."
         />
@@ -183,7 +183,7 @@ function Day2Page({ showToast }: { showToast: (message: string) => void }) {
         <ProgramCard
           eyebrow="SHARING"
           title="팀별 나눔"
-          icon={<ProgramIcon kind="team" />}
+          icon={<ProgramIcon kind="sharing" />}
           time="16:00–18:00"
           description="카페에서 기도제목과 질문을 팀별로 나눕니다."
         />
@@ -248,18 +248,17 @@ function Day3Page() {
           />
         </ProgramCard>
         <ProgramCard
-          eyebrow="CLOSING WORSHIP"
-          title="폐회예배"
-          icon={<ProgramIcon kind="worship" />}
+          eyebrow="CLOSING WORSHIP & PRAYER"
+          title={
+            <span>
+              폐회예배
+              <br />
+              손바닥 기도
+            </span>
+          }
+          icon={<ProgramIcon kind="palm-prayer" />}
           time="10:00–11:00"
-          description="함께 예배드리며 수련회 일정을 마무리합니다."
-        />
-        <ProgramCard
-          eyebrow="PALM PRAYER"
-          title="손바닥 기도"
-          icon={<ProgramIcon kind="meditation" />}
-          time="10:00–11:00"
-          description="손가락을 하나씩 짚으며 각 기도 제목을 두고 함께 기도합니다."
+          description="함께 예배드리며 수련회 일정을 마무리하고, 손가락을 하나씩 짚으며 각 기도 제목을 두고 기도합니다."
         >
           <section className="prayer-topics" aria-labelledby="day3-prayer-topics-title">
             <h3 id="day3-prayer-topics-title">DAY 3 손바닥 기도 제목</h3>

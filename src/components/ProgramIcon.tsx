@@ -1,4 +1,4 @@
-export type ProgramIconKind = "icebreaker" | "meditation" | "testimony" | "team" | "volunteer" | "worship";
+export type ProgramIconKind = "icebreaker" | "meditation" | "testimony" | "team" | "sharing" | "palm-prayer" | "volunteer" | "worship";
 
 export function ProgramIcon({ kind }: { kind: ProgramIconKind }) {
   if (kind === "icebreaker") {
@@ -35,6 +35,25 @@ export function ProgramIcon({ kind }: { kind: ProgramIconKind }) {
       <svg className="program-icon" viewBox="0 0 24 24">
         <path d="M7 4h10v3.5a5 5 0 0 1-10 0V4ZM9 18h6M12 12.5V18M5 6H3v1.5A3.5 3.5 0 0 0 6.5 11M19 6h2v1.5a3.5 3.5 0 0 1-3.5 3.5" />
         <path d="M8 21h8" />
+      </svg>
+    );
+  }
+
+  if (kind === "sharing") {
+    return (
+      <svg className="program-icon" viewBox="0 0 24 24">
+        <path d="M4 5.5h10a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3H9l-3.5 2.8v-2.8H4a3 3 0 0 1-3-3v-3a3 3 0 0 1 3-3Z" />
+        <path d="M17 9.5h1a3 3 0 0 1 3 3v2.5a3 3 0 0 1-3 3h-.5v2.3L14.5 18H11a3 3 0 0 1-2.8-2" />
+        <path d="M5.5 9.8h7M5.5 12.2h4.5" />
+      </svg>
+    );
+  }
+
+  if (kind === "palm-prayer") {
+    return (
+      <svg className="program-icon" viewBox="0 0 24 24">
+        <path d="M6.8 12V7.2a1.2 1.2 0 0 1 2.4 0v3.3-5a1.2 1.2 0 0 1 2.4 0v5-5.8a1.2 1.2 0 0 1 2.4 0v5.8-4.7a1.2 1.2 0 0 1 2.4 0v7.1l1.1-1.4a1.5 1.5 0 0 1 2.4 1.8l-3.1 5.2A5 5 0 0 1 12.5 21h-1.4a5 5 0 0 1-4.7-3.3L4.2 12a1.4 1.4 0 0 1 2.6-1Z" />
+        <path d="M11.6 13.2v4M9.6 15.2h4" />
       </svg>
     );
   }

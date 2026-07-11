@@ -1431,7 +1431,7 @@ a {
   position: fixed;
   z-index: 10;
   right: 50%;
-  bottom: max(2px, env(safe-area-inset-bottom));
+  bottom: max(8px, env(safe-area-inset-bottom));
   display: grid;
   width: min(calc(100% - 24px), 406px);
   grid-template-columns: repeat(4, 1fr);
