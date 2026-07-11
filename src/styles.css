@@ -542,6 +542,7 @@ a {
 
 .accordion {
   overflow: hidden;
+  scroll-margin-top: 12px;
 }
 
 .accordion h3 {
