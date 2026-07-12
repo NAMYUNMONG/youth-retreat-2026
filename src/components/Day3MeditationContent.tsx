@@ -1,3 +1,6 @@
+import { Accordion } from "./Accordion";
+import { NotePad } from "./NotePad";
+
 type MeditationItem = {
   title: string;
   text: string;
@@ -68,9 +71,11 @@ function MeditationList({ items }: { items: MeditationItem[] }) {
     <ol className="meditation-list">
       {items.map((item) => (
         <li className="meditation-item" key={item.title}>
-          <strong className="meditation-item__title">{item.title}</strong>
+          <div className="meditation-item__header">
+            <strong className="meditation-item__title">{item.title}</strong>
+            {item.scripture && <span className="meditation-scripture">{item.scripture.split(" · ").map((verse) => <span key={verse}>{verse}</span>)}</span>}
+          </div>
           <p className="meditation-item__text">{item.text}</p>
-          {item.scripture && <span className="meditation-scripture">{item.scripture}</span>}
         </li>
       ))}
     </ol>
@@ -81,7 +86,6 @@ export function Day3MeditationContent() {
   return (
     <div className="meditation-content">
       <section className="meditation-intro">
-        <p className="meditation-intro__eyebrow">CLOSING MEDITATION</p>
         <h4>5만 번 응답받은 조지 뮬러의 기도</h4>
         <strong>염려를 내려놓고, 하나님의 뜻을 분별하며, 인내로 기도하는 아침</strong>
         <p>
@@ -89,27 +93,37 @@ export function Day3MeditationContent() {
         </p>
       </section>
 
-      <section className="meditation-section">
-        <h4 className="meditation-section__title">하나님의 뜻을 분별하는 법</h4>
-        <MeditationList items={discernmentItems} />
-        <p className="meditation-application">오늘 내가 붙들고 있는 걱정이나 선택의 문제는 무엇인가요? 그 문제 앞에서 내가 내려놓아야 할 내 뜻은 무엇인가요?</p>
-      </section>
+      <div className="meditation-accordions">
+        <Accordion title="하나님의 뜻을 분별하는 법">
+          <section className="meditation-section">
+            <MeditationList items={discernmentItems} />
+            <p className="meditation-application">오늘 내가 붙들고 있는 걱정이나 선택의 문제는 무엇인가요? 그 문제 앞에서 내가 내려놓아야 할 내 뜻은 무엇인가요?</p>
+          </section>
+        </Accordion>
 
-      <section className="meditation-section">
-        <h4 className="meditation-section__title">응답받는 강력한 기도 방법</h4>
-        <MeditationList items={prayerItems} />
-        <p className="meditation-application">내가 지금 인내하며 계속 기도해야 할 제목은 무엇인가요? 그 기도 안에서 하나님께 맡겨야 할 것은 무엇인가요?</p>
-      </section>
+        <Accordion title="응답받는 강력한 기도 방법">
+          <section className="meditation-section">
+            <MeditationList items={prayerItems} />
+            <p className="meditation-application">내가 지금 인내하며 계속 기도해야 할 제목은 무엇인가요? 그 기도 안에서 하나님께 맡겨야 할 것은 무엇인가요?</p>
+          </section>
+        </Accordion>
 
-      <section className="meditation-questions" aria-labelledby="meditation-questions-title">
-        <h4 id="meditation-questions-title" className="meditation-section__title">오늘의 묵상 질문</h4>
-        {questions.map((question, index) => (
-          <div className="meditation-question-card" key={question}>
-            <span aria-hidden="true">{index + 1}</span>
-            <p>{question}</p>
-          </div>
-        ))}
-      </section>
+        <Accordion title="오늘의 묵상 질문">
+          <section className="meditation-questions" aria-label="오늘의 묵상 질문">
+            {questions.map((question, index) => (
+              <div className="meditation-question-card" key={question}>
+                <span aria-hidden="true">{index + 1}</span>
+                <p>{question}</p>
+              </div>
+            ))}
+            <NotePad
+              storageKey="day3-meditation-note"
+              label="DAY 3 아침묵상 적용 노트"
+              placeholder="오늘 아침 하나님께서 주신 마음, 내려놓아야 할 염려, 계속 붙들 기도제목을 적어보세요."
+            />
+          </section>
+        </Accordion>
+      </div>
     </div>
   );
 }

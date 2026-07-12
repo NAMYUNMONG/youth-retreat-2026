@@ -1,3 +1,12 @@
+export const philippiansPassage = {
+  reference: "빌립보서 4장 6–7절",
+  ariaLabel: "빌립보서 4장 6절부터 7절",
+  verses: [
+    { verse: "6절,", text: "아무 것도 염려하지 말고 다만 모든 일에 기도와 간구로, 너희 구할 것을 감사함으로 하나님께 아뢰라" },
+    { verse: "7절,", text: "그리하면 모든 지각에 뛰어난 하나님의 평강이 그리스도 예수 안에서 너희 마음과 생각을 지키시리라" },
+  ],
+} as const;
+
 export const retreatConfig = {
   schedule: {
     day1: [
@@ -29,7 +38,6 @@ export const retreatConfig = {
     ],
   },
   day1: {
-    playlistUrl: "",
     sheetUrl: "",
     sermonPassage: "",
     sermonTopic: "",
@@ -65,9 +73,8 @@ export const retreatConfig = {
     ],
   },
   day2: {
-    playlistUrl: "",
     sheetUrl: "",
-    sermonPassage: "빌립보서 4장 6-7절",
+    sermonPassage: philippiansPassage.reference,
     sermonTopic: "염려 OFF, 기도 ON",
     sheets: [
       {

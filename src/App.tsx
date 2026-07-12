@@ -14,7 +14,7 @@ import { SiteFooter } from "./components/SiteFooter";
 import { TimeTable } from "./components/TimeTable";
 import { Toast } from "./components/Toast";
 import { WorshipCard } from "./components/WorshipCard";
-import { retreatConfig } from "./config/retreat";
+import { philippiansPassage, retreatConfig } from "./config/retreat";
 
 type Route = "home" | "about" | "day1" | "day2" | "day3" | "day1Sheets" | "day2Sheets" | "photos";
 
@@ -121,10 +121,10 @@ function Day1Page({ showToast }: { showToast: (message: string) => void }) {
         <WorshipCard
           dayLabel="DAY 1"
           time="20:00–22:00"
-          playlistUrl={retreatConfig.day1.playlistUrl}
           sheetUrl={retreatConfig.day1.sheetUrl}
           sermonPassage={retreatConfig.day1.sermonPassage}
           sermonTopic={retreatConfig.day1.sermonTopic}
+          topicFirst
           sheets={retreatConfig.day1.sheets}
           sheetPageHref="#/day1/sheets"
           noteKey="day1-sermon-note"
@@ -190,10 +190,11 @@ function Day2Page({ showToast }: { showToast: (message: string) => void }) {
         <WorshipCard
           dayLabel="DAY 2"
           time="20:00–22:00"
-          playlistUrl={retreatConfig.day2.playlistUrl}
           sheetUrl={retreatConfig.day2.sheetUrl}
           sermonPassage={retreatConfig.day2.sermonPassage}
           sermonTopic={retreatConfig.day2.sermonTopic}
+          topicFirst
+          sermonVerses={philippiansPassage.verses}
           sheets={retreatConfig.day2.sheets}
           sheetPageHref="#/day2/sheets"
           noteKey="day2-sermon-note"
@@ -241,11 +242,6 @@ function Day3Page() {
           time="08:00–10:00"
         >
           <Day3MeditationContent />
-          <NotePad
-            storageKey="day3-meditation-note"
-            label="DAY 3 아침묵상 적용 노트"
-            placeholder="오늘 아침 하나님께서 주신 마음, 내려놓아야 할 염려, 계속 붙들 기도제목을 적어보세요."
-          />
         </ProgramCard>
         <ProgramCard
           eyebrow="CLOSING WORSHIP & PRAYER"

@@ -1,11 +1,13 @@
-type SermonPoint = { title: string; text: string; image?: string; scripture?: string };
+import { Accordion } from "./Accordion";
+
+type SermonPoint = { title: string; text: string; scripture?: string };
 type SermonSection = { title: string; text: string; points: SermonPoint[]; application: string };
 
 const sections: SermonSection[] = [
   { title: "1. 왜 우리의 삶에는 염려가 많은가?", text: "우리의 삶에는 염려가 끊이지 않습니다. 외부의 영적 공격, 우리 안의 악한 본성, 그리고 육신의 한계가 우리를 계속 불안하게 만듭니다.", points: [
-    { title: "공중 권세 잡은 자", text: "세상의 흐름과 영적 공격은 우리의 마음을 흔들고 염려하게 만듭니다.", image: "바닷물" },
-    { title: "악한 본성", text: "우리 안의 죄성과 자기중심성은 하나님보다 상황을 더 크게 보게 만듭니다.", image: "잔디밭" },
-    { title: "육신의 한계", text: "인간은 연약하고 유한한 존재이기에 미래와 죽음, 한계 앞에서 염려할 수밖에 없습니다.", image: "70이요 강건하면 80" },
+    { title: "공중 권세 잡은 자", text: "세상의 흐름과 영적 공격은 우리의 마음을 흔들고 염려하게 만듭니다." },
+    { title: "악한 본성", text: "우리 안의 죄성과 자기중심성은 하나님보다 상황을 더 크게 보게 만듭니다." },
+    { title: "육신의 한계", text: "인간은 연약하고 유한한 존재이기에 미래와 죽음, 한계 앞에서 염려할 수밖에 없습니다." },
   ], application: "나는 요즘 무엇 때문에 가장 많이 염려하고 있나요? 그 염려의 뿌리는 어디에 있나요?" },
   { title: "2. 평강의 본질은 무엇인가? 평강은 어떻게 임하는가?", text: "성경이 말하는 평강은 단순히 문제가 없는 상태가 아닙니다. 하나님께서 주시는 샬롬이며, 하나님과의 관계 안에서 주어지는 온전함입니다.", points: [
     { title: "평강은 무엇인가?", text: "평강은 샬롬입니다. 전쟁이 없는 평화만이 아니라, 번영과 안녕과 온전함이 담긴 하나님의 선물입니다." },
@@ -23,8 +25,10 @@ const questions = ["내 마음을 가장 자주 흔드는 염려는 무엇인가
 
 export function Day2SermonContent() {
   return <div className="sermon-content">
-    <section className="sermon-intro"><p>빌립보서 4장 6-7절</p><h4>염려 OFF, 기도 ON</h4><div className="sermon-flow" aria-label="염려에서 기도를 거쳐 평강으로 이어지는 흐름"><span className="sermon-flow__chip">염려</span><span className="sermon-flow__arrow" aria-hidden="true">→</span><span className="sermon-flow__chip">기도</span><span className="sermon-flow__arrow" aria-hidden="true">→</span><span className="sermon-flow__chip">평강</span></div><strong>염려가 많은데, 어떻게 평강을 누릴 수 있을까?</strong><p>염려와 평강 사이에는 기도가 있습니다. 염려를 붙들고 사는 것이 아니라, 모든 일을 하나님께 아뢰는 자리로 나아갈 때 하나님의 평강이 우리의 마음과 생각을 지켜주십니다.</p></section>
-    {sections.map((section) => <section className="sermon-section" key={section.title}><h4 className="sermon-section__title">{section.title}</h4><p className="sermon-section__intro">{section.text}</p><ol className="sermon-point-list">{section.points.map((point) => <li className="sermon-point" key={point.title}><strong className="sermon-point__title">{point.title}</strong><p className="sermon-point__text">{point.text}</p>{point.image && <span className="sermon-image-metaphor">비유 · {point.image}</span>}{point.scripture && <span className="sermon-scripture">{point.scripture}</span>}</li>)}</ol><p className="sermon-application">{section.application}</p></section>)}
+    <section className="sermon-intro"><h4 className="sermon-intro__topic">염려 OFF, 기도 ON</h4><p className="sermon-intro__scripture">빌립보서 4장 6-7절</p><div className="sermon-flow" aria-label="염려에서 기도를 거쳐 평강으로 이어지는 흐름"><span className="sermon-flow__chip">염려</span><span className="sermon-flow__arrow" aria-hidden="true">→</span><span className="sermon-flow__chip">기도</span><span className="sermon-flow__arrow" aria-hidden="true">→</span><span className="sermon-flow__chip">평강</span></div><strong>염려가 많은데, 어떻게 평강을 누릴 수 있을까?</strong><p>염려와 평강 사이에는 기도가 있습니다. 염려를 붙들고 사는 것이 아니라, 모든 일을 하나님께 아뢰는 자리로 나아갈 때 하나님의 평강이 우리의 마음과 생각을 지켜주십니다.</p></section>
+    <div className="sermon-accordions">
+      {sections.map((section, index) => <Accordion key={section.title} title={<span className="sermon-accordion-heading"><span aria-hidden="true">{index + 1}.</span><span>{section.title.replace(/^\d+\.\s*/, "")}</span></span>}><section className="sermon-section"><p className="sermon-section__intro">{section.text}</p><ol className="sermon-point-list">{section.points.map((point) => <li className="sermon-point" key={point.title}><strong className="sermon-point__title">{point.title}</strong><p className="sermon-point__text">{point.text}</p>{point.scripture && <span className="sermon-scripture">{point.scripture}</span>}</li>)}</ol><p className="sermon-application">{section.application}</p></section></Accordion>)}
+    </div>
     <section className="sermon-summary"><h4>오늘 말씀 정리</h4><p>염려를 끄는 방법은 문제를 잊는 것이 아니라, 모든 일을 하나님께 아뢰는 기도의 자리로 나아가는 것입니다. 그때 하나님께서 주시는 평강이 우리의 마음과 생각을 지켜주십니다.</p><div>{["염려 OFF", "기도 ON", "하나님의 평강", "하나님의 뜻", "말씀과 양심"].map((item) => <span key={item}>{item}</span>)}</div></section>
     <section className="sermon-questions" aria-labelledby="sermon-questions-title"><h4 id="sermon-questions-title" className="sermon-section__title">설교를 들으며 생각해볼 질문</h4>{questions.map((question, index) => <div key={question}><span>{index + 1}</span><p>{question}</p></div>)}</section>
   </div>;
