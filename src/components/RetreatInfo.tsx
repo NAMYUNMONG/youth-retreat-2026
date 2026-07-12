@@ -11,6 +11,50 @@ const checklistItems = [
   { label: "개인 전자용품", children: ["휴대전화 충전기", "헤어드라이어"] },
 ];
 
+type TeamAssignment = {
+  name: string;
+  leader?: string;
+  members: string[];
+};
+
+const volunteerTeams: TeamAssignment[] = [
+  { name: "1", leader: "강서준", members: ["김예지", "박도현", "이나연", "최민석", "정유나"] },
+  { name: "2", leader: "윤태현", members: ["한지민", "송준호", "오수아", "임재윤", "배하린"] },
+  { name: "3", leader: "조현우", members: ["문서윤", "장민호", "신예린", "권도윤", "백지아"] },
+  { name: "4", leader: "홍준혁", members: ["유채원", "노건우", "안서현", "서지훈", "황다인"] },
+  { name: "5", leader: "김태윤", members: ["이가은", "박성민", "최예나", "정시온", "한수빈"] },
+  { name: "6", leader: "이승현", members: ["김나윤", "박재현", "최하린", "정민규", "윤서아"] },
+];
+
+const communityTeams: TeamAssignment[] = [
+  { name: "1", leader: "김민준", members: ["이서연", "박지훈", "최하은", "정우진", "한예린"] },
+  { name: "2", leader: "이도윤", members: ["김서현", "박준서", "최유진", "정하람", "윤지우"] },
+  { name: "3", leader: "박시우", members: ["김하윤", "이현우", "최서아", "강민재", "송예은"] },
+  { name: "4", leader: "최지호", members: ["김다은", "이준혁", "박수빈", "정건우", "임채원"] },
+];
+
+function TeamRoster({ teams, vertical = false }: { teams: TeamAssignment[]; vertical?: boolean }) {
+  return (
+    <div className={`team-roster${vertical ? " team-roster--vertical" : ""}`}>
+      {teams.map((team) => (
+        <article className="team-roster-card" key={team.name}>
+          <div className="team-roster-card__header">
+            <strong>{team.name}</strong>
+          </div>
+          <dl className="team-roster-card__people">
+            <div>
+              <dd className="team-roster-card__leader">{team.leader || "미정"}</dd>
+            </div>
+            <div>
+              <dd>{team.members.length > 0 ? <ul>{team.members.map((member) => <li key={member}>{member}</li>)}</ul> : <span className="team-roster-card__empty">추후 입력</span>}</dd>
+            </div>
+          </dl>
+        </article>
+      ))}
+    </div>
+  );
+}
+
 export function RetreatInfo() {
   return (
     <section id="about" className="page-section">
@@ -54,7 +98,7 @@ export function RetreatInfo() {
       </div>
 
       <div className="section-stack">
-        <Accordion title="수련회 프로그램" icon={<RetreatInfoIcon kind="program" />} defaultOpen>
+        <Accordion title="수련회 프로그램" icon={<RetreatInfoIcon kind="program" />}>
           <ul className="timeline-list">
             <li>
               <strong>7월 16일 목요일</strong>
@@ -72,7 +116,21 @@ export function RetreatInfo() {
         </Accordion>
 
         <Accordion title="수련회 조편성" icon={<RetreatInfoIcon kind="groups" />}>
-          <p className="notice">조편성과 조별 리더 정보가 확정되면 업데이트됩니다.</p>
+          <div className="team-structure">
+            <p className="team-structure__intro">프로그램에 따라 서로 다른 팀으로 편성됩니다.</p>
+            <div className="team-program-accordions">
+              <Accordion title="봉사 프로그램" meta="3팀 또는 6팀">
+                <div className="team-program-roster">
+                  <TeamRoster teams={volunteerTeams} vertical />
+                </div>
+              </Accordion>
+              <Accordion title="공동체 프로그램" meta="4팀">
+                <div className="team-program-roster">
+                  <TeamRoster teams={communityTeams} vertical />
+                </div>
+              </Accordion>
+            </div>
+          </div>
         </Accordion>
 
         <Accordion title="수련회 준비물" icon={<RetreatInfoIcon kind="packing" />}>
