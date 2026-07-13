@@ -7,6 +7,15 @@ export const philippiansPassage = {
   ],
 } as const;
 
+export const jeremiahPassage = {
+  reference: "예레미야 33장 2–3절",
+  ariaLabel: "예레미야 33장 2절부터 3절",
+  verses: [
+    { verse: "2절,", text: "일을 행하시는 여호와, 그것을 만들며 성취하시는 여호와, 그의 이름을 여호와라 하는 이가 이와 같이 이르시도다" },
+    { verse: "3절,", text: "너는 내게 부르짖으라 내가 네게 응답하겠고 네가 알지 못하는 크고 은밀한 일을 네게 보이리라" },
+  ],
+} as const;
+
 export const retreatConfig = {
   schedule: {
     day1: [
@@ -39,8 +48,8 @@ export const retreatConfig = {
   },
   day1: {
     sheetUrl: "",
-    sermonPassage: "",
-    sermonTopic: "",
+    sermonPassage: jeremiahPassage.reference,
+    sermonTopic: "기도, 문제 해결의 시작",
     sheets: [
       {
         title: "주를 바라보며",

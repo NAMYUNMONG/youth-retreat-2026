@@ -15,7 +15,7 @@ import { SiteFooter } from "./components/SiteFooter";
 import { TimeTable } from "./components/TimeTable";
 import { Toast } from "./components/Toast";
 import { WorshipCard } from "./components/WorshipCard";
-import { philippiansPassage, retreatConfig } from "./config/retreat";
+import { jeremiahPassage, philippiansPassage, retreatConfig } from "./config/retreat";
 
 type Route = "home" | "about" | "day1" | "day2" | "day3" | "day1Sheets" | "day2Sheets" | "photos";
 
@@ -31,6 +31,16 @@ const routeMap: Record<string, Route> = {
 };
 
 const photoShareVisible = false;
+
+const danielPrayerPassage = {
+  reference: "다니엘 6장 10절",
+  verses: [
+    {
+      verse: "10",
+      text: "다니엘이 이 조서에 왕의 도장이 찍힌 것을 알고도 자기 집에 돌아가서는 윗방에 올라가 예루살렘으로 향한 창문을 열고 전에 하던 대로 하루 세 번씩 무릎을 꿇고 기도하며 그의 하나님께 감사하였더라",
+    },
+  ],
+};
 
 const volunteerVisitSteps = [
   { title: "인사", detail: "리더가 대표로 인사합니다." },
@@ -230,11 +240,20 @@ function Day1Page({ showToast }: { showToast: (message: string) => void }) {
           sermonPassage={retreatConfig.day1.sermonPassage}
           sermonTopic={retreatConfig.day1.sermonTopic}
           topicFirst
+          sermonVerses={jeremiahPassage.verses}
           sheets={retreatConfig.day1.sheets}
           sheetPageHref="#/day1/sheets"
           noteKey="day1-sermon-note"
           onEmptyLink={showToast}
-        />
+        >
+          <section className="program-item-list day1-sermon-outline" aria-label="DAY 1 저녁예배 설교 개요">
+            <ol>
+              <li><span>기도란 무엇인가?</span></li>
+              <li><span>왜 기도해야 하는가?</span></li>
+              <li><span>기도할 때 중요한 것은?</span></li>
+            </ol>
+          </section>
+        </WorshipCard>
       </DaySection>
     </>
   );
@@ -250,8 +269,27 @@ function Day2Page({ showToast }: { showToast: (message: string) => void }) {
           title="아침묵상"
           icon={<ProgramIcon kind="meditation" />}
           time="08:00–10:00"
-          description="아침묵상 본문과 나눔 가이드는 추후 업데이트됩니다."
-        />
+        >
+          <dl className="sermon-meta morning-meditation-meta">
+            <div>
+              <dt>주제</dt>
+              <dd>어떻게 기도할까?</dd>
+            </div>
+            <div className="sermon-meta__passage">
+              <dt>말씀</dt>
+              <dd>
+                <details>
+                  <summary>{danielPrayerPassage.reference}</summary>
+                  <div className="sermon-passage-verses">
+                    {danielPrayerPassage.verses.map((item) => (
+                      <p key={item.verse}><strong>{item.verse}</strong><span>{item.text}</span></p>
+                    ))}
+                  </div>
+                </details>
+              </dd>
+            </div>
+          </dl>
+        </ProgramCard>
         <ProgramCard
           eyebrow="SESSION"
           title="간증 시간"
@@ -366,26 +404,33 @@ function Day3Page() {
         <ProgramCard
           eyebrow="CLOSING WORSHIP & PRAYER"
           title={
-            <span>
+            <span className="program-title__stack">
               폐회예배
-              <br />
-              손바닥 기도
+              <span className="program-title__secondary">손바닥 기도</span>
             </span>
           }
           icon={<ProgramIcon kind="palm-prayer" />}
           time="10:00–11:00"
-          description="함께 예배드리며 수련회 일정을 마무리하고, 손가락을 하나씩 짚으며 각 기도 제목을 두고 기도합니다."
         >
-          <section className="prayer-topics" aria-labelledby="day3-prayer-topics-title">
-            <h3 id="day3-prayer-topics-title">DAY 3 손바닥 기도 제목</h3>
-            <ol>
-              <li><span>기도 제목 1</span></li>
-              <li><span>기도 제목 2</span></li>
-              <li><span>기도 제목 3</span></li>
-              <li><span>기도 제목 4</span></li>
-              <li><span>기도 제목 5</span></li>
-            </ol>
-          </section>
+          <dl className="sermon-meta closing-worship-meta">
+            <div className="sermon-meta__passage">
+              <dt>말씀</dt>
+              <dd>
+                <details>
+                  <summary>빌립보서 4장 6-7절</summary>
+                  <div className="sermon-passage-verses">
+                    {philippiansPassage.verses.map((item) => (
+                      <p key={item.verse}><strong>{item.verse}</strong><span>{item.text}</span></p>
+                    ))}
+                  </div>
+                </details>
+              </dd>
+            </div>
+            <div>
+              <dt>주제</dt>
+              <dd>하나님을 만나는 문, 기도로 들어가라</dd>
+            </div>
+          </dl>
         </ProgramCard>
       </DaySection>
     </>
