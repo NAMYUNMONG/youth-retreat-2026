@@ -5,7 +5,7 @@ const checklistItems = [
   { label: "성경책 및 필기구" },
   {
     label: "개인 위생용품",
-    children: ["수건", "치약 및 칫솔", "바디워시 및 샴푸"],
+    children: ["수건", "치약 및 칫솔", "바디워시 및 샴푸", "썬크림"],
   },
   { label: "여벌 의류", children: ["속옷 및 양말"] },
   { label: "개인 전자용품", children: ["휴대전화 충전기", "헤어드라이어"] },
@@ -17,29 +17,14 @@ type TeamAssignment = {
   members: string[];
 };
 
-type VolunteerTeamMode = "all" | 3 | 6;
-
-const volunteerTeamMode: VolunteerTeamMode = "all";
-
-const volunteerTeamsByMode: Record<3 | 6, TeamAssignment[]> = {
-  6: [
-    { name: "1", leader: "김인용", members: ["구광해"] },
-    { name: "2", leader: "이성민", members: ["서성원", "성원경"] },
-    { name: "3", leader: "김태현", members: ["이주혁"] },
-    { name: "4", leader: "남윤성", members: ["이예나", "정승은"] },
-    { name: "5", leader: "유은정", members: ["김민정1", "김민정2"] },
-    { name: "6", leader: "김은설", members: ["박시온", "이신혁"] },
-  ],
-  3: [
-    { name: "1", leader: "이성민", members: ["서성원", "성원경", "김은설", "박시온"] },
-    { name: "2", leader: "김인용", members: ["구광해", "김태현", "이예나", "정승은", "이신혁"] },
-    { name: "3", leader: "유은정", members: ["남윤성", "김민정1", "김민정2", "이주혁"] },
-  ],
-};
-
-const getVisibleVolunteerModes = (mode: VolunteerTeamMode): Array<3 | 6> => mode === "all" ? [6, 3] : [mode];
-
-const getVolunteerTeamMeta = (mode: VolunteerTeamMode) => mode === "all" ? "3팀 · 6팀 구성안" : `${mode}팀`;
+const volunteerTeams: TeamAssignment[] = [
+  { name: "1", leader: "김인용", members: ["구광해"] },
+  { name: "2", leader: "이성민", members: ["서성원", "성원경"] },
+  { name: "3", leader: "김태현", members: ["이주혁"] },
+  { name: "4", leader: "남윤성", members: ["이예나", "정승은"] },
+  { name: "5", leader: "유은정", members: ["김민정1", "김민정2"] },
+  { name: "6", leader: "김은설", members: ["박시온", "이신혁"] },
+];
 
 const communityTeams: TeamAssignment[] = [
   { name: "1", leader: "이성민", members: ["서성원", "성원경", "김민정1", "김예소"] },
@@ -116,12 +101,12 @@ export function RetreatInfo() {
         <Accordion title="수련회 프로그램" icon={<RetreatInfoIcon kind="program" />}>
           <ul className="timeline-list">
             <li>
-              <strong>7월 16일 목요일</strong>
-              <span>개회예배 · 아이스브레이킹 · 봉사 활동 · 신앙 프로그램 · 저녁 예배</span>
+              <strong>7/16</strong>
+              <span>개회예배 · 공동체 프로그램 · 봉사활동 · 신앙 프로그램 · 저녁예배</span>
             </li>
             <li>
-              <strong>7월 17일 금요일</strong>
-              <span>아침묵상 · 간증 시간 · 공동체 게임 · 나눔 · 저녁 예배</span>
+              <strong>7/17</strong>
+              <span>아침묵상 · 간증 시간 · 공동체 프로그램 · 저녁예배</span>
             </li>
             <li>
               <strong>7월 18일 토요일</strong>
@@ -133,19 +118,12 @@ export function RetreatInfo() {
         <Accordion title="수련회 조편성" icon={<RetreatInfoIcon kind="groups" />}>
           <div className="team-structure">
             <div className="team-program-accordions">
-              <Accordion title="봉사활동" meta={getVolunteerTeamMeta(volunteerTeamMode)}>
+              <Accordion title="봉사활동" meta="6조">
                 <div className="team-program-roster">
-                  <div className="volunteer-team-options">
-                    {getVisibleVolunteerModes(volunteerTeamMode).map((mode) => (
-                      <section className="volunteer-team-option" key={mode}>
-                        <h4>{mode}팀 구성안</h4>
-                        <TeamRoster teams={volunteerTeamsByMode[mode]} vertical />
-                      </section>
-                    ))}
-                  </div>
+                  <TeamRoster teams={volunteerTeams} vertical />
                 </div>
               </Accordion>
-              <Accordion title="공동체 프로그램" meta="4팀">
+              <Accordion title="공동체 프로그램" meta="4조">
                 <div className="team-program-roster">
                   <TeamRoster teams={communityTeams} vertical />
                 </div>

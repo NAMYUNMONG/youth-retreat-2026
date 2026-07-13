@@ -2102,6 +2102,23 @@ a {
   padding: 10px;
 }
 
+.meditation-accordions .meditation-questions .meditation-question-card {
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  padding: 6px 9px;
+}
+
+.meditation-accordions .meditation-questions .meditation-question-card span {
+  width: 22px;
+  height: 22px;
+}
+
+.meditation-accordions .meditation-questions .meditation-question-card p {
+  margin-top: 0;
+  line-height: 1.4;
+}
+
 .meditation-accordions .meditation-item::before,
 .meditation-accordions .meditation-question-card span {
   background: #075477;
@@ -2210,10 +2227,11 @@ a {
 }
 
 .sermon-accordions .sermon-question-card {
-  grid-template-columns: 22px minmax(0, 1fr);
-  gap: 7px;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 6px;
+  align-items: center;
   border-radius: 10px;
-  padding: 7px 9px;
+  padding: 5px 8px;
 }
 
 .sermon-accordions .sermon-question-card + .sermon-question-card {
@@ -2221,8 +2239,8 @@ a {
 }
 
 .sermon-accordions .sermon-question-card > span {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   border-radius: 7px;
   font-size: 0.72rem;
 }
@@ -2230,7 +2248,7 @@ a {
 .sermon-accordions .sermon-question-card p {
   margin: 0;
   font-size: 0.84rem;
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
 .sermon-accordions .sermon-questions .note-pad {
@@ -2257,25 +2275,28 @@ a {
 
 .sermon-accordions .sermon-point {
   border: 1px solid rgba(7, 84, 119, 0.1);
-  padding: 10px 10px 9px 42px;
+  padding: 6px 9px 6px 38px;
   background: #f4f8fa;
   box-shadow: none;
 }
 
 .sermon-accordions .sermon-point::before {
-  top: 10px;
-  left: 10px;
-  width: 22px;
-  height: 22px;
+  top: 6px;
+  left: 9px;
+  width: 20px;
+  height: 20px;
   background: #075477;
   color: #ffffff;
 }
 
 .sermon-accordions .sermon-point__text {
-  margin-top: 3px;
-  line-height: 1.5;
+  margin-top: 1px;
+  line-height: 1.4;
 }
 
 .sermon-accordions .sermon-scripture {
+  margin-top: 4px;
+  padding: 3px 7px;
   font-weight: 400;
+  line-height: 1.3;
 }
