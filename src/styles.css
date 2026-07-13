@@ -1521,10 +1521,80 @@ a {
 }
 
 .volunteer-guidelines li span {
+  display: grid;
+  gap: 1px;
   color: #07324a;
   font-size: 0.92rem;
-  font-weight: 700;
   line-height: 1.5;
+}
+
+.volunteer-guidelines li strong {
+  font-weight: 800;
+}
+
+.volunteer-guidelines li small {
+  color: #476b78;
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.45;
+  word-break: keep-all;
+}
+
+.program-guide-accordions {
+  display: grid;
+  gap: 7px;
+  margin-top: 10px;
+}
+
+.program-guide-accordions > .accordion {
+  border-color: rgba(7, 84, 119, 0.12);
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.program-guide-accordions .accordion__trigger {
+  min-height: 44px;
+  padding: 8px 10px 8px 12px;
+}
+
+.program-guide-accordions .accordion__title {
+  color: #07324a;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  text-align: left;
+  word-break: keep-all;
+}
+
+.program-guide-accordions .accordion__panel {
+  padding: 0 12px 8px;
+}
+
+.team-sharing-questions {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.team-sharing-questions li {
+  position: relative;
+  border-top: 1px solid rgba(7, 84, 119, 0.1);
+  padding: 7px 0 7px 15px;
+  color: #476b78;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+.team-sharing-questions li::before {
+  position: absolute;
+  top: 14px;
+  left: 2px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #078b93;
+  content: "";
 }
 
 .prayer-topics {
@@ -2099,9 +2169,46 @@ a {
 }
 
 .sermon-accordions .sermon-questions {
+  gap: 4px;
   border: 0;
   padding: 4px 0 6px;
   background: transparent;
+}
+
+.sermon-accordions .sermon-question-card {
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 7px;
+  border-radius: 10px;
+  padding: 7px 9px;
+}
+
+.sermon-accordions .sermon-question-card + .sermon-question-card {
+  border-top: 1px solid rgba(7, 84, 119, 0.09);
+}
+
+.sermon-accordions .sermon-question-card > span {
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  font-size: 0.72rem;
+}
+
+.sermon-accordions .sermon-question-card p {
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+
+.sermon-accordions .sermon-questions .note-pad {
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.sermon-accordions .sermon-questions .note-pad textarea {
+  min-height: 108px;
+  border-radius: 14px;
+  padding: 10px 11px;
+  line-height: 1.5;
 }
 
 .sermon-accordions .sermon-section__intro {

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { Accordion } from "./components/Accordion";
 import { BottomNavigation } from "./components/BottomNavigation";
 import { DaySection } from "./components/DaySection";
 import { Day3MeditationContent } from "./components/Day3MeditationContent";
@@ -30,6 +31,89 @@ const routeMap: Record<string, Route> = {
 };
 
 const photoShareVisible = false;
+
+const volunteerVisitSteps = [
+  { title: "인사", detail: "리더가 대표로 인사합니다." },
+  { title: "선물 증정", detail: "준비한 선물을 전달합니다." },
+  { title: "다과", detail: "함께 다과를 해도 되는지 여쭙고 준비합니다." },
+  { title: "자기소개", detail: "한 명씩 돌아가며 자신을 소개합니다." },
+  { title: "안마", detail: "안마를 해드려도 되는지 먼저 여쭙습니다." },
+  { title: "집안일 돕기", detail: "소소하게 도와드릴 일이 있는지 여쭙습니다." },
+  { title: "사진 촬영", detail: "마지막으로 함께 사진을 찍고 마무리합니다." },
+];
+
+const teamSharingSections = [
+  {
+    title: "지금의 나를 돌아보는 질문",
+    questions: [
+      "요즘 내 마음을 한 단어로 표현한다면?",
+      "최근 가장 많이 드는 생각은 무엇인가?",
+      "요즘 가장 감사한 일은?",
+      "요즘 가장 무거운 고민은 무엇인가?",
+      "지금의 나에게 가장 필요한 것은 무엇이라고 생각하는가?",
+    ],
+  },
+  {
+    title: "하나님과의 관계",
+    questions: [
+      "하나님과 가장 가까웠다고 느꼈던 때는 언제였는가?",
+      "반대로 하나님이 멀게 느껴졌던 시기가 있었는가?",
+      "요즘 말씀과 기도생활은 어떤 상태인가?",
+      "하나님께 요즘 가장 많이 하는 기도는 무엇인가?",
+      "하나님께 아직도 이해되지 않는 부분이 있는가?",
+    ],
+  },
+  {
+    title: "신앙의 고민",
+    questions: [
+      "지금 내 신앙에서 가장 어려운 부분은?",
+      "반복해서 넘어지는 유혹이나 죄가 있는가?",
+      "믿음 때문에 고민되는 현실적인 문제가 있는가?",
+      "신앙생활을 하면서 가장 두려운 것은?",
+      "예전보다 식어진 부분이 있다면 무엇 때문이라고 생각하는가?",
+    ],
+  },
+  {
+    title: "공동체",
+    questions: [
+      "우리 공동체에서 가장 감사한 사람은 누구이며 이유는?",
+      "공동체 안에서 더 바라는 것이 있다면?",
+      "혼자 감당하고 있는 일이 있는가?",
+      "누군가에게 미안했던 일이 있는가?",
+      "함께 기도받고 싶은 제목은?",
+    ],
+  },
+  {
+    title: "삶과 진로",
+    questions: [
+      "지금 가장 큰 고민은 무엇인가?",
+      "하나님께 맡기기 어려운 영역은?",
+      "앞으로 1년 동안 가장 이루고 싶은 것은?",
+      "하나님께서 나를 어떤 사람으로 빚어가고 계신다고 생각하는가?",
+      "지금 내가 순종해야 한다고 느끼는 것은 무엇인가?",
+    ],
+  },
+  {
+    title: "깊은 나눔 질문",
+    questions: [
+      "아무에게도 쉽게 말하지 못했던 고민이 있는가?",
+      "최근 눈물 흘리며 기도했던 적이 있는가?",
+      "누군가에게 용서를 구하거나 용서해야 할 사람이 있는가?",
+      "지금 가장 듣고 싶은 하나님의 말씀은 무엇일 것 같은가?",
+      "오늘 이 자리에서 함께 꼭 기도받고 싶은 제목은?",
+    ],
+  },
+  {
+    title: "마무리하기",
+    questions: [
+      "이 사람의 장점 한 가지를 말해주기",
+      "서로에게 감사한 점 한 가지씩 말하기",
+      "이번 수련회에서 서로 기대하는 변화는?",
+      "앞으로 함께 붙잡고 기도해 줄 제목은?",
+      "6개월 뒤 다시 만났을 때 어떤 사람이 되어 있기를 원하는가?",
+    ],
+  },
+];
 
 const getRoute = (): Route => {
   if (typeof window === "undefined") return "home";
@@ -110,17 +194,19 @@ function Day1Page({ showToast }: { showToast: (message: string) => void }) {
           time="15:00–16:30"
           description={
             <>
-              팀을 나누어 어르신 가정을 방문하여 봉사활동을 진행합니다.
+              팀을 나누어 어르신 가정을 방문합니다.
               <br />
-              아래 가이드라인을 따라 봉사활동을 진행해 주세요.
+              아래 순서에 따라 예의를 갖춰 봉사활동을 진행해 주세요.
             </>
           }
         >
           <section className="volunteer-guidelines" aria-label="DAY 1 봉사활동 가이드라인">
             <ol>
-              <li><span>가이드라인 1</span></li>
-              <li><span>가이드라인 2</span></li>
-              <li><span>가이드라인 3</span></li>
+              {volunteerVisitSteps.map((step) => (
+                <li key={step.title}>
+                  <span><strong>{step.title}</strong><small>{step.detail}</small></span>
+                </li>
+              ))}
             </ol>
           </section>
         </ProgramCard>
@@ -209,8 +295,17 @@ function Day2Page({ showToast }: { showToast: (message: string) => void }) {
           title="팀별 나눔"
           icon={<ProgramIcon kind="sharing" />}
           time="16:00–18:00"
-          description="카페에서 기도제목과 질문을 팀별로 나눕니다."
-        />
+        >
+          <section className="program-guide-accordions" aria-label="DAY 2 팀별 나눔 질문">
+            {teamSharingSections.map((section, index) => (
+              <Accordion key={section.title} title={`${index + 1}. ${section.title}`}>
+                <ul className="team-sharing-questions">
+                  {section.questions.map((question) => <li key={question}>{question}</li>)}
+                </ul>
+              </Accordion>
+            ))}
+          </section>
+        </ProgramCard>
         <WorshipCard
           dayLabel="DAY 2"
           time="20:00–22:00"
