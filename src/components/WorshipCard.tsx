@@ -34,7 +34,7 @@ export function WorshipCard({ dayLabel, time, sheetUrl, sermonPassage, sermonTop
     openLink(sheetUrl);
   };
 
-  const passageMeta = <div className="sermon-meta__passage"><dt>설교 말씀 본문</dt><dd>{sermonVerses.length > 0 ? <details><summary>{sermonPassage}</summary><div className="sermon-passage-verses">{sermonVerses.map((item) => <p key={item.verse}><strong>{item.verse}</strong><span>{item.text}</span></p>)}</div></details> : sermonPassage || "추후 업데이트 예정"}</dd></div>;
+  const passageMeta = <div className="sermon-meta__passage"><dt>설교 본문</dt><dd>{sermonVerses.length > 0 ? <details><summary>{sermonPassage}</summary><div className="sermon-passage-verses">{sermonVerses.map((item) => <p key={item.verse}><strong>{item.verse}</strong><span>{item.text}</span></p>)}</div></details> : sermonPassage || "추후 업데이트 예정"}</dd></div>;
 
   return <ProgramCard eyebrow={dayLabel} title="저녁예배" icon={<ProgramIcon kind="worship" />} time={time}>
     <dl className="sermon-meta">

@@ -2146,6 +2146,16 @@ a {
   grid-template-columns: max-content minmax(0, 1fr);
   gap: 0.35em;
 }
+.sermon-application-heading {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: -6px;
+  line-height: 1.38;
+}
+.sermon-application-heading .program-icon {
+  flex: 0 0 auto;
+}
 .sermon-intro, .sermon-section, .sermon-summary, .sermon-questions { border: 1px solid rgba(7,139,147,.16); border-radius: 18px; padding: 15px; background: #f5faf9; }
 .sermon-intro { background: linear-gradient(135deg, #075477, #078b93); color: #fff; }
 .sermon-intro__scripture { margin: 6px 0 0; color: #fff1a8; font-size: .78rem; font-weight: 900; }

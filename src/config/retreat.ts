@@ -16,6 +16,16 @@ export const jeremiahPassage = {
   ],
 } as const;
 
+export const jeremiahOpeningPassage = {
+  reference: "예레미야 29장 11–13절",
+  ariaLabel: "예레미야 29장 11절부터 13절",
+  verses: [
+    { verse: "11절,", text: "여호와의 말씀이니라 너희를 향한 나의 생각을 내가 아나니 평안이요 재앙이 아니니라 너희에게 미래와 희망을 주는 것이니라" },
+    { verse: "12절,", text: "너희가 내게 부르짖으며 내게 와서 기도하면 내가 너희들의 기도를 들을 것이요" },
+    { verse: "13절,", text: "너희가 온 마음으로 나를 구하면 나를 찾을 것이요 나를 만나리라" },
+  ],
+} as const;
+
 export const retreatConfig = {
   schedule: {
     day1: [

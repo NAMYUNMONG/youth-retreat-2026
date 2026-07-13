@@ -1,5 +1,6 @@
 import { Accordion } from "./Accordion";
 import { NotePad } from "./NotePad";
+import { ProgramIcon } from "./ProgramIcon";
 
 type SermonPoint = { title: string; text: string; scripture?: string };
 type SermonSection = { title: string; text: string; points: SermonPoint[]; application: string };
@@ -29,7 +30,7 @@ export function Day2SermonContent() {
     <section className="sermon-intro"><h4 className="sermon-intro__topic">염려 OFF, 기도 ON</h4><p className="sermon-intro__scripture">빌립보서 4장 6-7절</p><div className="sermon-flow" aria-label="염려에서 기도를 거쳐 평강으로 이어지는 흐름"><span className="sermon-flow__chip">염려</span><span className="sermon-flow__arrow" aria-hidden="true">→</span><span className="sermon-flow__chip">기도</span><span className="sermon-flow__arrow" aria-hidden="true">→</span><span className="sermon-flow__chip">평강</span></div><strong>염려가 많은데, 어떻게 평강을 누릴 수 있을까?</strong><p>염려와 평강 사이에는 기도가 있습니다. 염려를 붙들고 사는 것이 아니라, 모든 일을 하나님께 아뢰는 자리로 나아갈 때 하나님의 평강이 우리의 마음과 생각을 지켜주십니다.</p></section>
     <div className="sermon-accordions">
       {sections.map((section, index) => <Accordion key={section.title} title={<span className="sermon-accordion-heading"><span aria-hidden="true">{index + 1}.</span><span>{section.title.replace(/^\d+\.\s*/, "")}</span></span>}><section className="sermon-section"><p className="sermon-section__intro">{section.text}</p><ol className="sermon-point-list">{section.points.map((point) => <li className="sermon-point" key={point.title}><strong className="sermon-point__title">{point.title}</strong><p className="sermon-point__text">{point.text}</p>{point.scripture && <span className="sermon-scripture">{point.scripture}</span>}</li>)}</ol><p className="sermon-application">{section.application}</p></section></Accordion>)}
-      <Accordion title="삶의 적용">
+      <Accordion title={<span className="sermon-application-heading"><ProgramIcon kind="sharing" /><span>삶의 적용</span></span>}>
         <section className="sermon-questions" aria-label="삶의 적용">
           {questions.map((question, index) => <div className="sermon-question-card" key={question}><span>{index + 1}</span><p>{question}</p></div>)}
           <NotePad

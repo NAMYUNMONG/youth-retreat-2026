@@ -15,7 +15,7 @@ import { SiteFooter } from "./components/SiteFooter";
 import { TimeTable } from "./components/TimeTable";
 import { Toast } from "./components/Toast";
 import { WorshipCard } from "./components/WorshipCard";
-import { jeremiahPassage, philippiansPassage, retreatConfig } from "./config/retreat";
+import { jeremiahOpeningPassage, jeremiahPassage, philippiansPassage, retreatConfig } from "./config/retreat";
 
 type Route = "home" | "about" | "day1" | "day2" | "day3" | "day1Sheets" | "day2Sheets" | "photos";
 
@@ -179,6 +179,32 @@ function Day1Page({ showToast }: { showToast: (message: string) => void }) {
       <DaySection id="day1" day="DAY 1" date="7월 16일 목요일" summary="개회예배와 봉사, 신앙 프로그램으로 시작하는 첫날">
         <TimeTable items={retreatConfig.schedule.day1} day="day1" />
         <ProgramCard
+          eyebrow="OPENING WORSHIP"
+          title="개회예배"
+          icon={<ProgramIcon kind="worship" />}
+          time="13:00–13:30"
+        >
+          <dl className="sermon-meta opening-worship-meta">
+            <div>
+              <dt>주제</dt>
+              <dd>염려 OFF, 기도 ON</dd>
+            </div>
+            <div className="sermon-meta__passage">
+              <dt>설교 본문</dt>
+              <dd>
+                <details>
+                  <summary>{jeremiahOpeningPassage.reference}</summary>
+                  <div className="sermon-passage-verses">
+                    {jeremiahOpeningPassage.verses.map((item) => (
+                      <p key={item.verse}><strong>{item.verse}</strong><span>{item.text}</span></p>
+                    ))}
+                  </div>
+                </details>
+              </dd>
+            </div>
+          </dl>
+        </ProgramCard>
+        <ProgramCard
           eyebrow="ICE BREAKING"
           title={
             <span className="program-title__stack">
@@ -202,13 +228,7 @@ function Day1Page({ showToast }: { showToast: (message: string) => void }) {
           title="봉사활동"
           icon={<ProgramIcon kind="volunteer" />}
           time="15:00–16:30"
-          description={
-            <>
-              팀을 나누어 어르신 가정을 방문합니다.
-              <br />
-              아래 순서에 따라 예의를 갖춰 봉사활동을 진행해 주세요.
-            </>
-          }
+          description="아래 순서에 따라 예의를 갖춰 봉사활동을 진행해 주세요."
         >
           <section className="volunteer-guidelines" aria-label="DAY 1 봉사활동 가이드라인">
             <ol>
@@ -413,8 +433,12 @@ function Day3Page() {
           time="10:00–11:00"
         >
           <dl className="sermon-meta closing-worship-meta">
+            <div>
+              <dt>주제</dt>
+              <dd>하나님을 만나는 문, 기도로 들어가라</dd>
+            </div>
             <div className="sermon-meta__passage">
-              <dt>말씀</dt>
+              <dt>설교 본문</dt>
               <dd>
                 <details>
                   <summary>빌립보서 4장 6-7절</summary>
@@ -425,10 +449,6 @@ function Day3Page() {
                   </div>
                 </details>
               </dd>
-            </div>
-            <div>
-              <dt>주제</dt>
-              <dd>하나님을 만나는 문, 기도로 들어가라</dd>
             </div>
           </dl>
         </ProgramCard>
