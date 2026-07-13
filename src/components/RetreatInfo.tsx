@@ -17,20 +17,35 @@ type TeamAssignment = {
   members: string[];
 };
 
-const volunteerTeams: TeamAssignment[] = [
-  { name: "1", leader: "강서준", members: ["김예지", "박도현", "이나연", "최민석", "정유나"] },
-  { name: "2", leader: "윤태현", members: ["한지민", "송준호", "오수아", "임재윤", "배하린"] },
-  { name: "3", leader: "조현우", members: ["문서윤", "장민호", "신예린", "권도윤", "백지아"] },
-  { name: "4", leader: "홍준혁", members: ["유채원", "노건우", "안서현", "서지훈", "황다인"] },
-  { name: "5", leader: "김태윤", members: ["이가은", "박성민", "최예나", "정시온", "한수빈"] },
-  { name: "6", leader: "이승현", members: ["김나윤", "박재현", "최하린", "정민규", "윤서아"] },
-];
+type VolunteerTeamMode = "all" | 3 | 6;
+
+const volunteerTeamMode: VolunteerTeamMode = "all";
+
+const volunteerTeamsByMode: Record<3 | 6, TeamAssignment[]> = {
+  6: [
+    { name: "1", leader: "김인용", members: ["구광해"] },
+    { name: "2", leader: "이성민", members: ["서성원", "성원경"] },
+    { name: "3", leader: "김태현", members: ["이주혁"] },
+    { name: "4", leader: "남윤성", members: ["이예나", "정승은"] },
+    { name: "5", leader: "유은정", members: ["김민정1", "김민정2"] },
+    { name: "6", leader: "김은설", members: ["박시온", "이신혁"] },
+  ],
+  3: [
+    { name: "1", leader: "이성민", members: ["서성원", "성원경", "김은설", "박시온"] },
+    { name: "2", leader: "김인용", members: ["구광해", "김태현", "이예나", "정승은", "이신혁"] },
+    { name: "3", leader: "유은정", members: ["남윤성", "김민정1", "김민정2", "이주혁"] },
+  ],
+};
+
+const getVisibleVolunteerModes = (mode: VolunteerTeamMode): Array<3 | 6> => mode === "all" ? [6, 3] : [mode];
+
+const getVolunteerTeamMeta = (mode: VolunteerTeamMode) => mode === "all" ? "3팀 · 6팀 구성안" : `${mode}팀`;
 
 const communityTeams: TeamAssignment[] = [
-  { name: "1", leader: "김민준", members: ["이서연", "박지훈", "최하은", "정우진", "한예린"] },
-  { name: "2", leader: "이도윤", members: ["김서현", "박준서", "최유진", "정하람", "윤지우"] },
-  { name: "3", leader: "박시우", members: ["김하윤", "이현우", "최서아", "강민재", "송예은"] },
-  { name: "4", leader: "최지호", members: ["김다은", "이준혁", "박수빈", "정건우", "임채원"] },
+  { name: "1", leader: "이성민", members: ["서성원", "성원경", "김민정1", "김예소"] },
+  { name: "2", leader: "김인용", members: ["구광해", "이주혁", "장승리", "고은유"] },
+  { name: "3", leader: "김태현", members: ["이예나", "정승은", "김민정2", "이희주", "김정윤"] },
+  { name: "4", leader: "남윤성", members: ["박시온", "김은설", "김민서", "이신혁"] },
 ];
 
 function TeamRoster({ teams, vertical = false }: { teams: TeamAssignment[]; vertical?: boolean }) {
@@ -119,9 +134,16 @@ export function RetreatInfo() {
           <div className="team-structure">
             <p className="team-structure__intro">프로그램에 따라 서로 다른 팀으로 편성됩니다.</p>
             <div className="team-program-accordions">
-              <Accordion title="봉사활동" meta="3팀 또는 6팀">
+              <Accordion title="봉사활동" meta={getVolunteerTeamMeta(volunteerTeamMode)}>
                 <div className="team-program-roster">
-                  <TeamRoster teams={volunteerTeams} vertical />
+                  <div className="volunteer-team-options">
+                    {getVisibleVolunteerModes(volunteerTeamMode).map((mode) => (
+                      <section className="volunteer-team-option" key={mode}>
+                        <h4>{mode}팀 구성안</h4>
+                        <TeamRoster teams={volunteerTeamsByMode[mode]} vertical />
+                      </section>
+                    ))}
+                  </div>
                 </div>
               </Accordion>
               <Accordion title="공동체 프로그램" meta="4팀">

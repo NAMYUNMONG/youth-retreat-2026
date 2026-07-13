@@ -1875,6 +1875,23 @@ a {
   padding-top: 7px;
 }
 
+.volunteer-team-options {
+  display: grid;
+  gap: 12px;
+}
+
+.volunteer-team-option + .volunteer-team-option {
+  border-top: 1px solid rgba(7, 84, 119, 0.12);
+  padding-top: 10px;
+}
+
+.volunteer-team-option h4 {
+  margin: 0 0 6px 2px;
+  color: #075477;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
 .team-roster {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1887,7 +1904,7 @@ a {
 
 .team-roster-card {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-columns: 42px minmax(0, 1fr);
   align-items: center;
   overflow: hidden;
   border: 1px solid rgba(7, 84, 119, 0.12);
@@ -1897,16 +1914,19 @@ a {
 
 .team-roster-card__header {
   display: flex;
+  width: 100%;
   min-height: 36px;
   align-items: center;
+  justify-content: center;
   border-right: 1px solid rgba(7, 84, 119, 0.14);
-  padding: 7px 10px;
+  padding: 7px 0;
   background: transparent;
 }
 
 .team-roster-card__header strong {
   color: #07324a;
   font-size: 0.84rem;
+  font-variant-numeric: tabular-nums;
 }
 
 .team-roster-card__people {
