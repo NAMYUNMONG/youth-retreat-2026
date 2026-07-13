@@ -70,6 +70,40 @@ a {
   margin-bottom: 28px;
 }
 
+.app-shell--home {
+  background: #ffffff;
+}
+
+.home-gradient {
+  position: relative;
+  isolation: isolate;
+  display: flow-root;
+  margin: 0 -16px;
+}
+
+.home-gradient::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: linear-gradient(180deg, #cef9ff 0%, #d1fff5 46%, #ffffff 100%);
+  content: "";
+}
+
+.home-gradient > * {
+  position: relative;
+  z-index: 1;
+}
+
+.home-gradient > .hero {
+  margin-inline: 0;
+  background: transparent;
+}
+
+.home-gradient > #about {
+  padding-inline: 16px;
+  background: transparent;
+}
+
 .site-footer {
   display: flex;
   justify-content: center;
@@ -864,6 +898,22 @@ a {
 
 .program-card h3 {
   font-size: 1.22rem;
+}
+
+.program-title__secondary {
+  display: inline-block;
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.program-title__stack {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.program-title__secondary--indented {
+  margin-left: 0.35rem;
 }
 
 .program-accordion__content {

@@ -86,7 +86,12 @@ function Day1Page({ showToast }: { showToast: (message: string) => void }) {
         <TimeTable items={retreatConfig.schedule.day1} day="day1" />
         <ProgramCard
           eyebrow="ICE BREAKING"
-          title="아이스브레이킹"
+          title={
+            <span className="program-title__stack">
+              공동체 프로그램
+              <span className="program-title__secondary program-title__secondary--indented">- 아이스브레이킹</span>
+            </span>
+          }
           icon={<ProgramIcon kind="icebreaker" />}
           time="13:30–15:00"
         >
@@ -123,9 +128,9 @@ function Day1Page({ showToast }: { showToast: (message: string) => void }) {
           eyebrow="PRAYER"
           title={
             <span>
-              신앙프로그램
+              신앙 프로그램
               <br />
-              (손바닥 기도)
+              <span className="program-title__secondary">(손바닥 기도)</span>
             </span>
           }
           icon={<ProgramIcon kind="palm-prayer" />}
@@ -178,7 +183,12 @@ function Day2Page({ showToast }: { showToast: (message: string) => void }) {
         </ProgramCard>
         <ProgramCard
           eyebrow="TEAM"
-          title="공동체 게임"
+          title={
+            <span className="program-title__stack">
+              공동체 프로그램
+              <span className="program-title__secondary program-title__secondary--indented">- 공동체 게임</span>
+            </span>
+          }
           icon={<ProgramIcon kind="team" />}
           time="14:00–16:00"
         >
@@ -358,16 +368,16 @@ function App() {
     if (photoShareVisible && route === "photos") return <PhotosPage showToast={showToast} />;
 
     return (
-      <>
+      <div className="home-gradient">
         <Hero />
         <RetreatInfo />
-      </>
+      </div>
     );
   };
 
   return (
     <>
-      <main className="app-shell">
+      <main className={`app-shell${route === "home" ? " app-shell--home" : ""}`}>
         {renderPage()}
         {route !== "home" && <SiteFooter />}
       </main>

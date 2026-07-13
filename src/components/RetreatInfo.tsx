@@ -119,7 +119,7 @@ export function RetreatInfo() {
           <div className="team-structure">
             <p className="team-structure__intro">프로그램에 따라 서로 다른 팀으로 편성됩니다.</p>
             <div className="team-program-accordions">
-              <Accordion title="봉사 프로그램" meta="3팀 또는 6팀">
+              <Accordion title="봉사활동" meta="3팀 또는 6팀">
                 <div className="team-program-roster">
                   <TeamRoster teams={volunteerTeams} vertical />
                 </div>
