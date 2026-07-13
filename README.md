@@ -1,79 +1,103 @@
 # 2026 청년부 여름수련회 모바일 웹페이지
 
-`염려 Off, 기도 On` 여름수련회 안내용 Vite + React + TypeScript 정적 웹페이지입니다.
+`염려 Off, 기도 On` 2026 미아중앙교회 청년부 여름수련회를 위한 Vite + React + TypeScript 정적 웹 애플리케이션입니다.
 
-## 설치 및 실행 방법
+- 공개 페이지: https://namyunmong.github.io/youth-retreat-2026/
+- 운영 기간: 2026년 7월 16일–18일
+- 주요 환경: 모바일 우선, GitHub Pages
+
+## 주요 기능
+
+- 수련회 소개, 일정, 준비물 체크리스트
+- 봉사 프로그램과 공동체 프로그램의 팀별 명단
+- DAY 1–3 프로그램과 일정 아코디언
+- DAY 1·2 저녁예배 송리스트와 악보 뷰어
+- 악보 이전·다음 버튼, 모바일 좌우 스와이프
+- DAY 2 설교 본문, 설교 내용, 삶의 적용 아코디언
+- DAY 3 아침묵상, 묵상 질문, 기도제목 입력
+- 노트와 준비물 체크 상태의 브라우저 자동 저장
+
+## 설치 및 로컬 실행
 
 ```bash
 npm install
 npm run dev
 ```
 
-개발 서버가 실행되면 터미널에 표시되는 로컬 주소로 접속합니다. 모바일 확인은 브라우저 개발자 도구에서 360px, 390px, 430px 폭을 확인하면 됩니다.
+기본 Vite 주소로 실행한 경우 접속 경로는 다음과 같습니다.
 
-## 빌드 방법
+```text
+http://127.0.0.1:5173/youth-retreat-2026/
+```
+
+모바일 화면은 Chromium 기반 브라우저의 개발자 도구에서 `Ctrl + Shift + M`으로 기기 툴바를 열고 360px, 390px, 430px 폭을 확인합니다.
+
+## 빌드
 
 ```bash
 npm run build
 ```
 
-빌드 결과물은 `dist/` 폴더에 생성됩니다.
+`tsc --noEmit`으로 타입을 검사한 뒤 Vite가 `dist/`에 정적 배포 파일을 생성합니다. 배포 결과를 로컬에서 확인하려면 다음을 사용합니다.
 
-## 링크와 말씀 내용 수정 방법
-
-예배 링크, 악보 링크, 설교 본문, 설교 주제, 사진공유방 링크는 `src/config/retreat.ts`에서 수정합니다.
-
-```ts
-export const retreatConfig = {
-  day1: {
-    playlistUrl: "찬양 콘티 링크",
-    sheetUrl: "악보 링크",
-    sermonPassage: "빌립보서 4장 6-7절",
-    sermonTopic: "기도로 염려를 맡기는 삶",
-  },
-  day2: {
-    playlistUrl: "찬양 콘티 링크",
-    sheetUrl: "악보 링크",
-    sermonPassage: "말씀 본문",
-    sermonTopic: "설교 주제",
-  },
-  photos: {
-    retreatUrl: "수련회 사진공유방 링크",
-    volunteerUrl: "봉사활동 사진공유방 링크",
-    programUrl: "기타 프로그램 사진공유방 링크",
-  },
-};
+```bash
+npm run preview
 ```
 
-값이 빈 문자열이면 버튼 클릭 시 새 탭을 열지 않고 “링크 준비 중입니다.” 또는 “사진 링크 준비 중입니다.” 안내가 표시됩니다. 설교 본문과 주제가 비어 있으면 화면에는 “추후 업데이트 예정”으로 표시됩니다.
+## 콘텐츠 수정
 
-## 콘텐츠 편집 방법
+### 일정, 설교, 송리스트, 악보
 
-주요 화면 구성은 `src/App.tsx`에서 관리합니다. 반복 UI는 `src/components/`에 분리되어 있습니다.
+[`src/config/retreat.ts`](src/config/retreat.ts)에서 관리합니다.
 
-- `Hero.tsx`: 상단 타이틀 영역
-- `RetreatInfo.tsx`: 수련회 기본 정보, 일정표, 조편성, 준비물 체크리스트
-- `DaySection.tsx`: 날짜별 섹션 헤더
-- `ProgramCard.tsx`: 프로그램 카드
-- `WorshipCard.tsx`: 저녁 예배 카드
-- `NotePad.tsx`: 자동 저장 노트
-- `PhotoShareCard.tsx`: 사진공유방 카드
-- `BottomNavigation.tsx`: 하단 고정 메뉴
+- `schedule`: DAY 1–3 시간표
+- `day1`, `day2`: 설교 본문, 설교 주제, 악보 목록
+- `sheets[].title`: 찬양 아코디언에 보이는 송리스트
+- `sheets[].imageUrl`: 악보 이미지 경로
+- `photos`: 사진 공유 링크
 
-## 자동 저장 항목
+악보 이미지는 `public/sheets/day1/`, `public/sheets/day2/`에 보관합니다. 파일을 추가한 뒤 `sheets` 배열에 곡 제목과 경로를 등록해야 합니다.
 
-브라우저 `localStorage`에 아래 항목이 저장됩니다.
+### 조편성
 
-- 준비물 체크리스트: `retreat-packing-checklist`
-- 7월 16일 말씀 노트: `day1-sermon-note`
-- 7월 17일 강의 노트: `day2-lecture-note`
-- 7월 17일 말씀 노트: `day2-sermon-note`
-- 7월 18일 아침묵상 노트: `day3-meditation-note`
+[`src/components/RetreatInfo.tsx`](src/components/RetreatInfo.tsx)의 `volunteerTeams`, `communityTeams` 배열을 수정합니다.
 
-## 정적 배포 권장 방식
+```ts
+{ name: "1", leader: "리더 이름", members: ["팀원 1", "팀원 2", "팀원 3", "팀원 4", "팀원 5"] }
+```
 
-이 프로젝트는 로그인, 서버, DB가 없는 정적 웹페이지입니다. `npm run build` 후 생성되는 `dist/` 폴더를 GitHub Pages, Netlify, Vercel, Cloudflare Pages 같은 정적 호스팅에 배포하는 방식을 권장합니다.
+### 설교와 묵상 내용
 
-이 저장소는 GitHub Pages 배포를 위해 `vite.config.ts`에 `base: "/youth-retreat-2026/"`가 설정되어 있고, `.github/workflows/deploy.yml` 워크플로가 `main` 브랜치 푸시마다 `dist/`를 배포합니다.
+- `src/components/Day2SermonContent.tsx`: DAY 2 저녁예배 설교와 삶의 적용
+- `src/components/Day3MeditationContent.tsx`: DAY 3 아침묵상과 묵상 질문
+- `src/components/Hero.tsx`: 홈 화면 상단
 
-저장소 이름을 바꾸면 `vite.config.ts`의 `base` 값도 새 저장소명에 맞게 수정해야 합니다.
+## 주요 컴포넌트
+
+- `Accordion.tsx`: 공용 아코디언과 초기 접힘 상태
+- `WorshipCard.tsx`: DAY 1·2 저녁예배, 찬양, 설교 메타 정보
+- `SheetViewer.tsx`: 악보 순서, 이전·다음, 터치 스와이프
+- `NotePad.tsx`: `localStorage` 기반 자동 저장 노트
+- `RetreatInfo.tsx`: 수련회 정보, 조편성, 준비물
+- `BottomNavigation.tsx`: 하단 고정 네비게이션
+
+## 자동 저장 키
+
+| 항목 | `localStorage` 키 |
+| --- | --- |
+| 준비물 체크리스트 | `retreat-packing-checklist` |
+| DAY 1 말씀 노트 | `day1-sermon-note` |
+| DAY 2 간증 노트 | `day2-lecture-note` |
+| DAY 2 삶의 적용 | `day2-sermon-note` |
+| DAY 3 아침묵상 노트 | `day3-meditation-note` |
+
+## GitHub Pages 배포
+
+`vite.config.ts`에 `base: "/youth-retreat-2026/"`가 설정되어 있습니다. `.github/workflows/deploy.yml`은 `main` 브랜치에 푸시될 때마다 다음 순서로 배포합니다.
+
+1. 의존성 설치
+2. TypeScript 검사 및 Vite 빌드
+3. `dist/` 아티팩트 업로드
+4. GitHub Pages 배포
+
+저장소 이름을 변경하면 `vite.config.ts`의 `base` 값과 README의 공개 URL도 함께 수정해야 합니다.
