@@ -44,6 +44,7 @@ function PageTop({
   backLabel = "홈으로",
   showBack = true,
   compact = false,
+  inlineBack = false,
 }: {
   label: string;
   title: string;
@@ -51,7 +52,20 @@ function PageTop({
   backLabel?: string;
   showBack?: boolean;
   compact?: boolean;
+  inlineBack?: boolean;
 }) {
+  if (inlineBack) {
+    return (
+      <header className="subpage-top subpage-top--sheet">
+        <span>{label}</span>
+        <div className="subpage-top__title-row">
+          <h1>{title}</h1>
+          {showBack && <a href={backHref} aria-label={`${backLabel} 이동`}>{backLabel}</a>}
+        </div>
+      </header>
+    );
+  }
+
   return (
     <header className={`subpage-top${compact ? " subpage-top--compact" : ""}`}>
       {showBack && (
@@ -201,6 +215,7 @@ function Day2Page({ showToast }: { showToast: (message: string) => void }) {
           onEmptyLink={showToast}
           noteLabel="DAY 2 저녁예배 설교 노트"
           notePlaceholder="염려를 하나님께 아뢰며, 오늘 말씀을 통해 깨달은 것과 기도제목을 적어보세요."
+          showNotePad={false}
         >
           <Day2SermonContent />
         </WorshipCard>
@@ -222,7 +237,7 @@ function SheetPage({
 }) {
   return (
     <>
-      <PageTop label="WORSHIP SHEETS" title={title} backHref={backHref} backLabel={`${dayLabel}으로`} />
+      <PageTop label="WORSHIP SHEETS" title={title} backHref={backHref} backLabel="돌아가기" inlineBack />
       <section className="page-section">
         <SheetViewer dayLabel={dayLabel} sheets={sheets} />
       </section>

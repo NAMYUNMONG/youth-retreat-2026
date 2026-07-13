@@ -19,11 +19,12 @@ type WorshipCardProps = {
   children?: ReactNode;
   noteLabel?: string;
   notePlaceholder?: string;
+  showNotePad?: boolean;
 };
 
 const defaultNotePlaceholder = "설교를 들으며 마음에 남은 말씀과 기도제목을 적어보세요.";
 
-export function WorshipCard({ dayLabel, time, sheetUrl, sermonPassage, sermonTopic, topicFirst = false, sermonVerses = [], sheets = [], sheetPageHref, noteKey, onEmptyLink, children, noteLabel, notePlaceholder = defaultNotePlaceholder }: WorshipCardProps) {
+export function WorshipCard({ dayLabel, time, sheetUrl, sermonPassage, sermonTopic, topicFirst = false, sermonVerses = [], sheets = [], sheetPageHref, noteKey, onEmptyLink, children, noteLabel, notePlaceholder = defaultNotePlaceholder, showNotePad = true }: WorshipCardProps) {
   const openLink = (url: string) => {
     if (!url) { onEmptyLink("링크 준비 중입니다."); return; }
     window.open(url, "_blank", "noopener,noreferrer");
@@ -37,9 +38,17 @@ export function WorshipCard({ dayLabel, time, sheetUrl, sermonPassage, sermonTop
 
   return <ProgramCard eyebrow={dayLabel} title="저녁예배" icon={<ProgramIcon kind="worship" />} time={time}>
     <dl className="sermon-meta">
-      <div className="sermon-meta__praise"><dt>찬양</dt><dd><div className="button-row sermon-meta__actions">
-        <button type="button" className="button button--secondary button--small" onClick={openSheets} aria-label={`${dayLabel} 악보 열기`}>악보 열기</button>
-      </div></dd></div>
+      <div className="sermon-meta__praise">
+        <details className="sermon-praise-accordion">
+          <summary>
+            <span className="sermon-praise-accordion__title">찬양</span>
+            <button type="button" className="button button--secondary button--small sermon-praise-accordion__sheet-button" onClick={(event) => { event.preventDefault(); event.stopPropagation(); openSheets(); }} aria-label={`${dayLabel} 악보 보기`}>악보 보기</button>
+          </summary>
+          <div className="sermon-praise-content">
+            {sheets.length > 0 ? <ol className="sermon-song-list">{sheets.map((sheet) => <li key={sheet.title}>{sheet.title}</li>)}</ol> : <p className="muted">송리스트는 추후 업데이트됩니다.</p>}
+          </div>
+        </details>
+      </div>
       {topicFirst ? <>
         <div><dt>설교 주제</dt><dd>{sermonTopic || "추후 업데이트 예정"}</dd></div>
         {passageMeta}
@@ -49,6 +58,6 @@ export function WorshipCard({ dayLabel, time, sheetUrl, sermonPassage, sermonTop
       </>}
     </dl>
     {children}
-    <NotePad storageKey={noteKey} label={noteLabel ?? `${dayLabel} 말씀 노트`} placeholder={notePlaceholder} />
+    {showNotePad && <NotePad storageKey={noteKey} label={noteLabel ?? `${dayLabel} 말씀 노트`} placeholder={notePlaceholder} />}
   </ProgramCard>;
 }

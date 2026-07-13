@@ -156,6 +156,39 @@ a {
   font-size: 2rem;
 }
 
+.subpage-top.subpage-top--sheet {
+  margin-bottom: 12px;
+  padding: 12px 16px 14px;
+}
+
+.subpage-top.subpage-top--sheet > span {
+  margin-top: 0;
+  font-size: 0.68rem;
+}
+
+.subpage-top__title-row {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.subpage-top__title-row h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.15;
+}
+
+.subpage-top__title-row a {
+  min-height: 32px;
+  flex: 0 0 auto;
+  padding: 5px 10px;
+  font-size: 0.78rem;
+}
+
 .hero {
   position: relative;
   min-height: 640px;
@@ -919,22 +952,14 @@ a {
 }
 
 .sheet-viewer__header {
-  display: grid;
-  gap: 5px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .sheet-viewer__header span {
   color: #057783;
   font-size: 0.76rem;
   font-weight: 900;
-}
-
-.sheet-viewer__header h4 {
-  margin: 0;
-  color: #07324a;
-  font-size: 1.28rem;
-  line-height: 1.28;
-  word-break: keep-all;
 }
 
 .sheet-viewer__image-wrap {
@@ -944,6 +969,7 @@ a {
   border-radius: 16px;
   background: #ffffff;
   box-shadow: 0 12px 28px rgba(5, 57, 82, 0.12);
+  touch-action: pan-y;
 }
 
 .sheet-viewer__image-wrap img {
@@ -1009,16 +1035,76 @@ a {
 }
 
 .sermon-meta .sermon-meta__praise {
-  padding-block: 6px;
+  padding: 0;
 }
 
-.sermon-meta__praise dd {
-  margin-top: 2px;
+.sermon-praise-accordion summary {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 10px 9px 14px;
+  color: #07324a;
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.86rem;
+  font-weight: 900;
 }
 
-.sermon-meta__praise .button {
-  min-height: 34px;
-  padding-block: 6px;
+.sermon-praise-accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.sermon-praise-accordion__title {
+  margin-right: auto;
+}
+
+.sermon-praise-accordion__sheet-button {
+  width: auto;
+  height: 30px;
+  min-height: 30px;
+  border-radius: 15px;
+  padding: 2px 8px;
+  font-size: 0.86rem;
+  font-weight: 400;
+  line-height: 1;
+  box-shadow: none;
+}
+
+.sermon-praise-accordion summary::after {
+  content: "+";
+  display: grid;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  place-items: center;
+  border-radius: 50%;
+  background: #e1fff7;
+  color: #056b78;
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+.sermon-praise-accordion[open] summary::after {
+  content: "\2212";
+}
+
+.sermon-praise-content {
+  display: grid;
+  gap: 10px;
+  border-top: 1px solid rgba(7, 84, 119, 0.12);
+  padding: 10px 12px 12px;
+}
+
+.sermon-song-list {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-left: 24px;
+  color: #476b78;
+  font-size: 1rem;
+  line-height: 1.45;
 }
 
 .note-pad {
@@ -1781,7 +1867,7 @@ a {
 .sermon-accordions .accordion__title,
 .meditation-accordions .accordion__title {
   margin-left: 6px;
-  font-size: 1.15rem;
+  font-size: 1rem;
   line-height: 1.38;
   text-align: left;
   word-break: keep-all;
@@ -1844,8 +1930,8 @@ a {
 .sermon-summary span { border-radius: 999px; padding: 5px 8px; background: #fff; color: #066c75; font-size: .72rem; font-weight: 900; }
 .sermon-questions { display: grid; gap: 8px; }
 .sermon-questions .sermon-section__title { margin-bottom: 4px; }
-.sermon-questions > div { display: grid; grid-template-columns: 25px minmax(0,1fr); gap: 9px; align-items: start; border-radius: 14px; padding: 12px; background: #fff; }
-.sermon-questions span { display: grid; width: 25px; height: 25px; place-items: center; border-radius: 8px; background: #075477; color: #fff; font-size: .76rem; font-weight: 900; }
+.sermon-question-card { display: grid; grid-template-columns: 25px minmax(0,1fr); gap: 9px; align-items: start; border-radius: 14px; padding: 12px; background: #fff; }
+.sermon-question-card > span { display: grid; width: 25px; height: 25px; place-items: center; border-radius: 8px; background: #075477; color: #fff; font-size: .76rem; font-weight: 900; }
 .sermon-questions p { margin: 1px 0 0; color: #07324a; font-weight: 700; }
 
 .sermon-accordions > .accordion {
@@ -1857,6 +1943,12 @@ a {
 }
 
 .sermon-accordions .sermon-section {
+  border: 0;
+  padding: 4px 0 6px;
+  background: transparent;
+}
+
+.sermon-accordions .sermon-questions {
   border: 0;
   padding: 4px 0 6px;
   background: transparent;
