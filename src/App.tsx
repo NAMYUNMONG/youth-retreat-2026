@@ -208,7 +208,7 @@ function Day1Page({ showToast }: { showToast: (message: string) => void }) {
           eyebrow="ICE BREAKING"
           title={
             <span className="program-title__stack">
-              공동체 프로그램
+              공동체 프로그램 1
               <span className="program-title__secondary program-title__secondary--indented">- 아이스브레이킹</span>
             </span>
           }
@@ -328,7 +328,7 @@ function Day2Page({ showToast }: { showToast: (message: string) => void }) {
           eyebrow="TEAM"
           title={
             <span className="program-title__stack">
-              공동체 프로그램
+              공동체 프로그램 2
               <span className="program-title__secondary program-title__secondary--indented">- 공동체 게임</span>
             </span>
           }
@@ -351,7 +351,7 @@ function Day2Page({ showToast }: { showToast: (message: string) => void }) {
           eyebrow="SHARING"
           title={
             <span className="program-title__stack">
-              공동체 프로그램
+              공동체 프로그램 3
               <span className="program-title__secondary program-title__secondary--indented">- 조별 나눔</span>
             </span>
           }
