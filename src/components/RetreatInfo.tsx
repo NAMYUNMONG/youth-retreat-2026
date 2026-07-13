@@ -132,7 +132,6 @@ export function RetreatInfo() {
 
         <Accordion title="수련회 조편성" icon={<RetreatInfoIcon kind="groups" />}>
           <div className="team-structure">
-            <p className="team-structure__intro">프로그램에 따라 서로 다른 팀으로 편성됩니다.</p>
             <div className="team-program-accordions">
               <Accordion title="봉사활동" meta={getVolunteerTeamMeta(volunteerTeamMode)}>
                 <div className="team-program-roster">

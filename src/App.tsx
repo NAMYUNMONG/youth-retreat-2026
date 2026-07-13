@@ -228,7 +228,6 @@ function Day1Page({ showToast }: { showToast: (message: string) => void }) {
           title="봉사활동"
           icon={<ProgramIcon kind="volunteer" />}
           time="15:00–16:30"
-          description="아래 순서에 따라 예의를 갖춰 봉사활동을 진행해 주세요."
         >
           <section className="volunteer-guidelines" aria-label="DAY 1 봉사활동 가이드라인">
             <ol>
@@ -350,11 +349,16 @@ function Day2Page({ showToast }: { showToast: (message: string) => void }) {
         </ProgramCard>
         <ProgramCard
           eyebrow="SHARING"
-          title="팀별 나눔"
+          title={
+            <span className="program-title__stack">
+              공동체 프로그램
+              <span className="program-title__secondary program-title__secondary--indented">- 조별 나눔</span>
+            </span>
+          }
           icon={<ProgramIcon kind="sharing" />}
           time="16:00–18:00"
         >
-          <section className="program-guide-accordions" aria-label="DAY 2 팀별 나눔 질문">
+          <section className="program-guide-accordions" aria-label="DAY 2 조별 나눔 질문">
             {teamSharingSections.map((section, index) => (
               <Accordion key={section.title} title={`${index + 1}. ${section.title}`}>
                 <ul className="team-sharing-questions">
