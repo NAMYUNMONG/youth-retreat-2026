@@ -23,9 +23,12 @@ export function Hero() {
           <span className="hero__topic hero__topic--worry">염려</span>
           <span className="hero__topic hero__topic--prayer">기도</span>
           <span className="hero__big-o" aria-hidden="true" />
-          <mark className="hero__switch hero__switch--off">FF</mark>
+          <span className="hero__letter-shape hero__letter-shape--ff" aria-hidden="true">
+            <span className="hero__letter-f" />
+            <span className="hero__letter-f" />
+          </span>
           <span className="hero__toggle hero__toggle--off" aria-hidden="true"><span /></span>
-          <mark className="hero__switch hero__switch--on">N</mark>
+          <span className="hero__letter-shape hero__letter-shape--n" aria-hidden="true" />
           <span className="hero__toggle hero__toggle--on" aria-hidden="true"><span /></span>
         </h1>
         <p className="hero__copy">"염려를 멈추고, 기도를 시작하라"</p>
