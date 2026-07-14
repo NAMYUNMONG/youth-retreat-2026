@@ -1736,6 +1736,23 @@ a {
   backdrop-filter: blur(16px);
 }
 
+.bottom-nav--limited {
+  grid-template-columns: 1fr 1fr;
+}
+
+.bottom-nav__notice {
+  display: flex;
+  min-width: 0;
+  min-height: 32px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
 .bottom-nav a {
   display: flex;
   min-width: 0;

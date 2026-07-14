@@ -13,7 +13,7 @@ type BottomNavigationProps = {
 
 export function BottomNavigation({ currentRoute, limited = false }: BottomNavigationProps) {
   return (
-    <nav className="bottom-nav" aria-label="주요 메뉴">
+    <nav className={`bottom-nav${limited ? " bottom-nav--limited" : ""}`} aria-label="주요 메뉴">
       {items.filter((item) => item.visible !== false && (!limited || item.route === "home")).map((item) => (
         <a
           key={item.href}
@@ -25,6 +25,7 @@ export function BottomNavigation({ currentRoute, limited = false }: BottomNaviga
           {item.label}
         </a>
       ))}
+      {limited && <span className="bottom-nav__notice">추후 공개</span>}
     </nav>
   );
 }
