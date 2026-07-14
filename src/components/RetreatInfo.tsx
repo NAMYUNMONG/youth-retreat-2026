@@ -58,12 +58,12 @@ function TeamRoster({ teams, vertical = false }: { teams: TeamAssignment[]; vert
 export function RetreatInfo({ limited = false }: { limited?: boolean }) {
   return (
     <section id="about" className="page-section">
-      {!limited && <div className="section-heading">
+      <div className="section-heading">
         <span>ABOUT</span>
         <h2>수련회에 대해서</h2>
-      </div>}
+      </div>
 
-      {!limited && <div className="info-card">
+      <div className="info-card">
         <div className="info-grid">
           <div>
             <p>목표</p>
@@ -95,7 +95,7 @@ export function RetreatInfo({ limited = false }: { limited?: boolean }) {
             </strong>
           </div>
         </div>
-      </div>}
+      </div>
 
       <div className="section-stack">
         <Accordion title="수련회 프로그램" icon={<RetreatInfoIcon kind="program" />}>
