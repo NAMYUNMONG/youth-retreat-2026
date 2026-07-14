@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { NOTE_STORAGE_SYNC_EVENT } from "../lib/noteStorage";
 
 type NotePadProps = {
   storageKey: string;
@@ -9,16 +10,20 @@ type NotePadProps = {
 const canUseStorage = () => typeof window !== "undefined" && "localStorage" in window;
 
 export function NotePad({ storageKey, placeholder, label }: NotePadProps) {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(() => {
+    if (!canUseStorage()) return "";
+    return window.localStorage.getItem(storageKey) ?? "";
+  });
   const [status, setStatus] = useState("자동 저장 대기 중");
 
   useEffect(() => {
     if (!canUseStorage()) return;
-    const saved = window.localStorage.getItem(storageKey);
-    if (saved) {
-      setValue(saved);
+    const loadSaved = () => {
+      setValue(window.localStorage.getItem(storageKey) ?? "");
       setStatus("저장된 노트를 불러왔습니다.");
-    }
+    };
+    window.addEventListener(NOTE_STORAGE_SYNC_EVENT, loadSaved);
+    return () => window.removeEventListener(NOTE_STORAGE_SYNC_EVENT, loadSaved);
   }, [storageKey]);
 
   useEffect(() => {

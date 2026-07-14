@@ -55,15 +55,15 @@ function TeamRoster({ teams, vertical = false }: { teams: TeamAssignment[]; vert
   );
 }
 
-export function RetreatInfo() {
+export function RetreatInfo({ limited = false }: { limited?: boolean }) {
   return (
     <section id="about" className="page-section">
-      <div className="section-heading">
+      {!limited && <div className="section-heading">
         <span>ABOUT</span>
         <h2>수련회에 대해서</h2>
-      </div>
+      </div>}
 
-      <div className="info-card">
+      {!limited && <div className="info-card">
         <div className="info-grid">
           <div>
             <p>목표</p>
@@ -95,7 +95,7 @@ export function RetreatInfo() {
             </strong>
           </div>
         </div>
-      </div>
+      </div>}
 
       <div className="section-stack">
         <Accordion title="수련회 프로그램" icon={<RetreatInfoIcon kind="program" />}>
@@ -115,7 +115,7 @@ export function RetreatInfo() {
           </ul>
         </Accordion>
 
-        <Accordion title="수련회 조편성" icon={<RetreatInfoIcon kind="groups" />}>
+        {!limited && <Accordion title="수련회 조편성" icon={<RetreatInfoIcon kind="groups" />}>
           <div className="team-structure">
             <div className="team-program-accordions">
               <Accordion title="봉사활동" meta="6조">
@@ -130,7 +130,7 @@ export function RetreatInfo() {
               </Accordion>
             </div>
           </div>
-        </Accordion>
+        </Accordion>}
 
         <Accordion title="수련회 준비물" icon={<RetreatInfoIcon kind="packing" />}>
           <ul className="checklist" aria-label="수련회 준비물 목록">

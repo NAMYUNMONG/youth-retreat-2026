@@ -8,12 +8,13 @@ const items = [
 
 type BottomNavigationProps = {
   currentRoute: string;
+  limited?: boolean;
 };
 
-export function BottomNavigation({ currentRoute }: BottomNavigationProps) {
+export function BottomNavigation({ currentRoute, limited = false }: BottomNavigationProps) {
   return (
     <nav className="bottom-nav" aria-label="주요 메뉴">
-      {items.filter((item) => item.visible !== false).map((item) => (
+      {items.filter((item) => item.visible !== false && (!limited || item.route === "home")).map((item) => (
         <a
           key={item.href}
           href={item.href}

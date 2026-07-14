@@ -6,6 +6,7 @@ import { Day3MeditationContent } from "./components/Day3MeditationContent";
 import { Day2SermonContent } from "./components/Day2SermonContent";
 import { Hero } from "./components/Hero";
 import { NotePad } from "./components/NotePad";
+import { OnlineBackup } from "./components/OnlineBackup";
 import { PhotoShareCard } from "./components/PhotoShareCard";
 import { ProgramCard } from "./components/ProgramCard";
 import { ProgramIcon } from "./components/ProgramIcon";
@@ -18,6 +19,8 @@ import { WorshipCard } from "./components/WorshipCard";
 import { jeremiahOpeningPassage, jeremiahPassage, philippiansPassage, retreatConfig } from "./config/retreat";
 
 type Route = "home" | "about" | "day1" | "day2" | "day3" | "day1Sheets" | "day2Sheets" | "photos";
+
+const FULL_CONTENT_RELEASE_AT = new Date("2026-07-16T12:00:00+09:00").getTime();
 
 const routeMap: Record<string, Route> = {
   home: "home",
@@ -308,6 +311,11 @@ function Day2Page({ showToast }: { showToast: (message: string) => void }) {
               </dd>
             </div>
           </dl>
+          <NotePad
+            storageKey="day2-meditation-note"
+            label="DAY 2 아침묵상 노트"
+            placeholder="묵상하며 마음에 남은 말씀과 기도제목을 자유롭게 적어보세요."
+          />
         </ProgramCard>
         <ProgramCard
           eyebrow="SESSION"
@@ -494,6 +502,14 @@ function PhotosPage({ showToast }: { showToast: (message: string) => void }) {
 function App() {
   const [toast, setToast] = useState("");
   const [route, setRoute] = useState<Route>(getRoute);
+  const [contentReleased, setContentReleased] = useState(() => Date.now() >= FULL_CONTENT_RELEASE_AT);
+
+  useEffect(() => {
+    if (contentReleased) return;
+    const delay = Math.max(0, FULL_CONTENT_RELEASE_AT - Date.now());
+    const timer = window.setTimeout(() => setContentReleased(true), delay);
+    return () => window.clearTimeout(timer);
+  }, [contentReleased]);
 
   useEffect(() => {
     const updateRoute = () => {
@@ -511,6 +527,15 @@ function App() {
   }, []);
 
   const renderPage = () => {
+    if (!contentReleased) {
+      return (
+        <div className="home-gradient">
+          <Hero />
+          <RetreatInfo limited />
+        </div>
+      );
+    }
+
     if (route === "about") {
       return (
         <>
@@ -541,11 +566,12 @@ function App() {
 
   return (
     <>
-      <main className={`app-shell${route === "home" ? " app-shell--home" : ""}`}>
+      <OnlineBackup onMessage={showToast} />
+      <main className={`app-shell${(!contentReleased || route === "home") ? " app-shell--home" : ""}`}>
         {renderPage()}
-        {route !== "home" && <SiteFooter />}
+        {contentReleased && route !== "home" && <SiteFooter />}
       </main>
-      <BottomNavigation currentRoute={route === "day1Sheets" ? "day1" : route === "day2Sheets" ? "day2" : route} />
+      <BottomNavigation currentRoute={contentReleased ? (route === "day1Sheets" ? "day1" : route === "day2Sheets" ? "day2" : route) : "home"} limited={!contentReleased} />
       <Toast message={toast} onClose={() => setToast("")} />
     </>
   );
