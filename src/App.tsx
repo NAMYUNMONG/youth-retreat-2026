@@ -21,7 +21,7 @@ import { jeremiahOpeningPassage, jeremiahPassage, philippiansPassage, retreatCon
 type Route = "home" | "about" | "day1" | "day2" | "day3" | "day1Sheets" | "day2Sheets" | "photos";
 
 const FULL_CONTENT_RELEASE_AT = new Date("2026-07-16T12:00:00+09:00").getTime();
-const TEMPORARY_FULL_CONTENT_UNTIL = new Date("2026-07-15T14:28:00+09:00").getTime();
+const TEMPORARY_FULL_CONTENT_UNTIL = new Date("2026-07-15T14:33:30+09:00").getTime();
 
 const isFullContentAvailable = () => {
   const now = Date.now();
@@ -509,6 +509,7 @@ function App() {
   const [toast, setToast] = useState("");
   const [route, setRoute] = useState<Route>(getRoute);
   const [contentReleased, setContentReleased] = useState(isFullContentAvailable);
+  const temporaryPreviewActive = Date.now() < TEMPORARY_FULL_CONTENT_UNTIL;
 
   useEffect(() => {
     const now = Date.now();
@@ -582,7 +583,7 @@ function App() {
 
   return (
     <>
-      <OnlineBackup onMessage={showToast} />
+      {!temporaryPreviewActive && <OnlineBackup onMessage={showToast} />}
       <main className={`app-shell${(!contentReleased || route === "home") ? " app-shell--home" : ""}`}>
         {renderPage()}
         {contentReleased && route !== "home" && <SiteFooter />}
