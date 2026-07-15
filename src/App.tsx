@@ -21,6 +21,12 @@ import { jeremiahOpeningPassage, jeremiahPassage, philippiansPassage, retreatCon
 type Route = "home" | "about" | "day1" | "day2" | "day3" | "day1Sheets" | "day2Sheets" | "photos";
 
 const FULL_CONTENT_RELEASE_AT = new Date("2026-07-16T12:00:00+09:00").getTime();
+const TEMPORARY_FULL_CONTENT_UNTIL = new Date("2026-07-15T14:28:00+09:00").getTime();
+
+const isFullContentAvailable = () => {
+  const now = Date.now();
+  return now < TEMPORARY_FULL_CONTENT_UNTIL || now >= FULL_CONTENT_RELEASE_AT;
+};
 
 const routeMap: Record<string, Route> = {
   home: "home",
@@ -502,12 +508,22 @@ function PhotosPage({ showToast }: { showToast: (message: string) => void }) {
 function App() {
   const [toast, setToast] = useState("");
   const [route, setRoute] = useState<Route>(getRoute);
-  const [contentReleased, setContentReleased] = useState(() => Date.now() >= FULL_CONTENT_RELEASE_AT);
+  const [contentReleased, setContentReleased] = useState(isFullContentAvailable);
 
   useEffect(() => {
-    if (contentReleased) return;
-    const delay = Math.max(0, FULL_CONTENT_RELEASE_AT - Date.now());
-    const timer = window.setTimeout(() => setContentReleased(true), delay);
+    const now = Date.now();
+    const nextTransition = now < TEMPORARY_FULL_CONTENT_UNTIL
+      ? TEMPORARY_FULL_CONTENT_UNTIL
+      : now < FULL_CONTENT_RELEASE_AT
+        ? FULL_CONTENT_RELEASE_AT
+        : null;
+
+    if (nextTransition === null) return;
+
+    const timer = window.setTimeout(() => {
+      setContentReleased(isFullContentAvailable());
+    }, Math.max(0, nextTransition - now));
+
     return () => window.clearTimeout(timer);
   }, [contentReleased]);
 
