@@ -18,12 +18,9 @@ type TeamAssignment = {
 };
 
 const volunteerTeams: TeamAssignment[] = [
-  { name: "1", leader: "김인용", members: ["구광해"] },
-  { name: "2", leader: "이성민", members: ["서성원", "성원경"] },
-  { name: "3", leader: "김태현", members: ["이주혁"] },
-  { name: "4", leader: "남윤성", members: ["이예나", "정승은"] },
-  { name: "5", leader: "유은정", members: ["김민정1", "김민정2"] },
-  { name: "6", leader: "김은설", members: ["박시온", "이신혁"] },
+  { name: "1", leader: "이성민", members: ["서성원", "성원경", "김은설", "박시온"] },
+  { name: "2", leader: "김인용", members: ["구광해", "김태현", "이예나", "정승은", "이신혁"] },
+  { name: "3", leader: "유은정", members: ["남윤성", "김민정1", "김민정2", "이주혁"] },
 ];
 
 const communityTeams: TeamAssignment[] = [
@@ -118,7 +115,7 @@ export function RetreatInfo({ limited = false }: { limited?: boolean }) {
         {!limited && <Accordion title="수련회 조편성" icon={<RetreatInfoIcon kind="groups" />}>
           <div className="team-structure">
             <div className="team-program-accordions">
-              <Accordion title="봉사활동" meta="6조">
+              <Accordion title="봉사활동" meta="3조">
                 <div className="team-program-roster">
                   <TeamRoster teams={volunteerTeams} vertical />
                 </div>
